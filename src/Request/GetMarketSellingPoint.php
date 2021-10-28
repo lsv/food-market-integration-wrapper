@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Request;
@@ -9,7 +10,6 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class GetMarketSellingPoint extends Request
 {
-
     private const MARKET_CODE_IDENTIFIER = 'marketCode';
     private const MARKET_SELLING_POINT = 'sellingCode';
 

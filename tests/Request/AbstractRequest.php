@@ -8,7 +8,6 @@ use Lsv\FoodMarketIntegration\Authenticate;
 use Lsv\FoodMarketIntegration\Request\Request;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 abstract class AbstractRequest extends TestCase
 {

@@ -9,8 +9,6 @@ use Lsv\FoodMarketIntegration\Request\GetMarketSellingPoints;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
 use Lsv\FoodMarketIntegration\Response\SellingPointAddress;
 use Lsv\FoodMarketIntegration\Response\SellingPointTags;
-use RuntimeException;
-use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
 class GetMarketSellingPointsTest extends AbstractRequest

@@ -56,7 +56,7 @@ class GetMarketSellingPoints extends Request
                 ];
             }
 
-            $url .= '?' . http_build_query($data);
+            $url .= '?'.http_build_query($data);
         }
 
         return $url;

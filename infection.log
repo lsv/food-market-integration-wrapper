@@ -1,0 +1,86 @@
+Escaped mutants:
+================
+
+1) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoint.php:39    [M] TrueValue
+
+--- Original
++++ New
+@@ @@
+     }
+     protected function handleResponse(ResponseInterface $response) : SellingPoint
+     {
+-        return $this->getSerializer()->deserialize($response->getContent(true), SellingPoint::class, 'json');
++        return $this->getSerializer()->deserialize($response->getContent(false), SellingPoint::class, 'json');
+     }
+     public function request() : SellingPoint
+     {
+
+
+2) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:32    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     protected function queryData(OptionsResolver $resolver) : void
+     {
+         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
+-        $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
++        
+         $resolver->setDefined([self::REQUEST_TAGS]);
+         $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
+     }
+
+
+3) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:35    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
+         $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
+         $resolver->setDefined([self::REQUEST_TAGS]);
+-        $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
++        
+     }
+     /**
+      * @param array<string, mixed> $queryData
+
+
+4) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:48    [M] LogicalAnd
+
+--- Original
++++ New
+@@ @@
+     protected function getUrl(array $queryData) : string
+     {
+         $url = sprintf('/markets/%s/sellingPoints', $queryData[self::MARKET_CODE_IDENTIFIER]);
+-        if (isset($queryData[self::REQUEST_TAGS]) && $queryData[self::REQUEST_TAGS]) {
++        if (isset($queryData[self::REQUEST_TAGS]) || $queryData[self::REQUEST_TAGS]) {
+             /** @var RequestTags $requestTags */
+             $requestTags = $queryData[self::REQUEST_TAGS];
+             $data = [];
+
+
+5) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:71    [M] TrueValue
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function handleResponse(ResponseInterface $response) : array
+     {
+-        return $this->getSerializer()->deserialize($response->getContent(true), SellingPoint::class . '[]', 'json');
++        return $this->getSerializer()->deserialize($response->getContent(false), SellingPoint::class . '[]', 'json');
+     }
+     /**
+      * @return array<SellingPoint>
+
+
+Timed Out mutants:
+==================
+
+Skipped mutants:
+================
+
+Not Covered mutants:
+====================

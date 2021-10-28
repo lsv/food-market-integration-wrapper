@@ -16,6 +16,6 @@
     },
     "phpUnit": {
         "configDir": "./..",
-        "customPath": "./bin/phpunit"
+        "customPath": "./vendor/bin/phpunit"
     }
 }
