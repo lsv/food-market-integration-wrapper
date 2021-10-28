@@ -1,0 +1,55 @@
+[
+    {
+        "id": 3442,
+        "name": "My restaurant",
+        "address": {
+            "id": 1003,
+            "street": "C/ Example, 23",
+            "details": "Canada building",
+            "city": "City name",
+            "province": "Province name",
+            "postalCode": "12345",
+            "latitude": 41.308166,
+            "longitude": 2.019725,
+            "googlePlaceId": "xxxxxxxxxxxx",
+            "placeName": "C/ Example, 23, City name"
+        },
+        "phone": "+34600000000",
+        "email": "myrestaurant@example.com",
+        "logo": "http://mycdn.com/selling-point-logo.jpeg",
+        "mainImage": "http://mycdn.com/selling-point-main-image.jpeg",
+        "listImage": "http://mycdn.com/selling-point-list-image.jpeg",
+        "urlKey": "restaurant-name-city",
+        "type": "Italian",
+        "timezone": "Europe/Madrid",
+        "description": "This restaurant...",
+        "schedule": {
+            "id": 2113,
+            "ranges": [
+                {
+                    "startTime": "06:00:00",
+                    "endTime": "18:00:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 1,
+                        "name": "Lunes"
+                    },
+                    "endDay": {
+                        "id": 1,
+                        "name": "Lunes"
+                    }
+                }
+            ]
+        },
+        "allowedOrderTypes": [
+            "type_1",
+            "type_2"
+        ],
+        "tags": [
+            {
+                "name": "Veggie",
+                "code": "veggie"
+            }
+        ]
+    }
+]
