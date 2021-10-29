@@ -6,14 +6,15 @@ namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Model\RequestTags;
 use Lsv\FoodMarketIntegration\Request\GetMarketSellingPoints;
-use Lsv\FoodMarketIntegration\Response\Error;
+use Lsv\FoodMarketIntegration\Response\Error\Error;
+use Lsv\FoodMarketIntegration\Response\ResponseError;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
 use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointAddress;
 use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointTags;
 use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class GetMarketSellingPointsTest extends AbstractRequest
+class GetMarketSellingPointsTest extends AbstractRequestTest
 {
     private const MARKET_ID = '123';
 
@@ -33,9 +34,9 @@ class GetMarketSellingPointsTest extends AbstractRequest
         ];
         self::setRequest($responses);
         $data = $this->testObject->request();
-        self::assertInstanceOf(Error::class, $data);
+        self::assertInstanceOf(ResponseError::class, $data);
         self::assertCount(1, $data->errors);
-        self::assertInstanceOf(Error\Error::class, $data->errors[0]);
+        self::assertInstanceOf(Error::class, $data->errors[0]);
         self::assertSame('ERROR_CODE_EXAMPLE', $data->errors[0]->code);
         self::assertSame('Error message', $data->errors[0]->message);
         self::assertSame('ERROR_CODE_EXAMPLE', $data->code);

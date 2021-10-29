@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Request;
 
-use Lsv\FoodMarketIntegration\Response\Error;
+use DateTimeInterface;
+use Lsv\FoodMarketIntegration\Response\ResponseError;
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GetSellingPointAvailability extends Request
+class GetSellingPointAvailability extends AbstractRequest
 {
     private const MARKET_CODE_IDENTIFIER = 'marketCode';
     private const MARKET_SELLING_POINT = 'sellingCode';
@@ -16,31 +17,36 @@ class GetSellingPointAvailability extends Request
 
     public function __construct(string $marketCodeIdentifier, int $sellingPointId)
     {
-        $this->queryData[self::MARKET_CODE_IDENTIFIER] = $marketCodeIdentifier;
-        $this->queryData[self::MARKET_SELLING_POINT] = $sellingPointId;
+        $this->addQueryData(self::MARKET_CODE_IDENTIFIER, $marketCodeIdentifier);
+        $this->addQueryData(self::MARKET_SELLING_POINT, $sellingPointId);
     }
 
-    public function setDate(\DateTimeInterface $dateTime): void
+    public function setDate(DateTimeInterface $dateTime): void
     {
-        $this->queryData[self::DATE] = $dateTime;
+        $this->addQueryData(self::DATE, $dateTime);
     }
 
-    protected function getUrl(array $queryData): string
+    protected function getUrlPath(): string
     {
-        $url = sprintf(
+        return sprintf(
             '/markets/%s/sellingPoints/%s/availability',
-            $queryData[self::MARKET_CODE_IDENTIFIER],
-            $queryData[self::MARKET_SELLING_POINT]
+            $this->getQueryData(self::MARKET_CODE_IDENTIFIER),
+            $this->getQueryData(self::MARKET_SELLING_POINT)
         );
+    }
 
-        if (isset($this->queryData[self::DATE])) {
-            $url .= '?'.http_build_query(['date' => $this->queryData[self::DATE]->format('Y-m-d')]);
+    protected function getUrlQuery(): array
+    {
+        $data = [];
+        if ($date = $this->getQueryData(self::DATE)) {
+            /* @var DateTimeInterface $date */
+            $data['date'] = $date->format('Y-m-d');
         }
 
-        return $url;
+        return $data;
     }
 
-    protected function queryData(OptionsResolver $resolver): void
+    protected function resolveQueryData(OptionsResolver $resolver): void
     {
         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER, self::MARKET_SELLING_POINT]);
         $resolver->setDefined([self::DATE]);
@@ -52,7 +58,7 @@ class GetSellingPointAvailability extends Request
             ->deserialize($content, SellingPointAvailability::class, 'json');
     }
 
-    public function request(): Error|SellingPointAvailability
+    public function request(): ResponseError|SellingPointAvailability
     {
         return $this->doRequest();
     }

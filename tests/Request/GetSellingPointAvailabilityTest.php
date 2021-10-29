@@ -11,7 +11,7 @@ use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\InsituServiceAva
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\ReservationServiceAvailability;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class GetSellingPointAvailabilityTest extends AbstractRequest
+class GetSellingPointAvailabilityTest extends AbstractRequestTest
 {
     private const MARKET_ID = '123';
     private const SELLING_POINT = 321;

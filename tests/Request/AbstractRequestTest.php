@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Authenticate;
-use Lsv\FoodMarketIntegration\Request\Request;
+use Lsv\FoodMarketIntegration\Request\AbstractRequest;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 
-abstract class AbstractRequest extends TestCase
+abstract class AbstractRequestTest extends TestCase
 {
     protected static function getAuthenticate(): Authenticate
     {
@@ -19,11 +19,9 @@ abstract class AbstractRequest extends TestCase
     protected static function setRequest(array $mockResponses): void
     {
         $client = new MockHttpClient($mockResponses, 'http://url.com');
-        Request::setAuthentication(self::getAuthenticate());
-        Request::setHttpClient($client);
+        AbstractRequest::setAuthentication(self::getAuthenticate());
+        AbstractRequest::setHttpClient($client);
     }
-
-    abstract public function testCanGetResponse(): void;
 
     public function responseObjectTest(object $object, array $tests): void
     {

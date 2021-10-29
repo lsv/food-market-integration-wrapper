@@ -1,52 +1,52 @@
 Escaped mutants:
 ================
 
-1) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:32    [M] MethodCallRemoval
+1) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:75    [M] ProtectedVisibility
 
 --- Original
 +++ New
 @@ @@
-     protected function queryData(OptionsResolver $resolver) : void
+      */
+     protected abstract function getUrlQuery() : array;
+     protected abstract function resolveQueryData(OptionsResolver $resolver) : void;
+-    protected function resolvePostData(OptionsResolver $resolver) : void
++    private function resolvePostData(OptionsResolver $resolver) : void
      {
-         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
--        $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
-+        
-         $resolver->setDefined([self::REQUEST_TAGS]);
-         $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
      }
+     protected abstract function handleResponse(string $content) : mixed;
 
 
-2) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:35    [M] MethodCallRemoval
+2) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:86    [M] ProtectedVisibility
 
 --- Original
 +++ New
 @@ @@
-         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
-         $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
-         $resolver->setDefined([self::REQUEST_TAGS]);
--        $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
-+        
-     }
      /**
-      * @param array<string, mixed> $queryData
+      * @return array<string, mixed>|null
+      */
+-    protected function getFormData() : ?array
++    private function getFormData() : ?array
+     {
+         return null;
+     }
 
 
-3) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:46    [M] PublicVisibility
+3) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:108    [M] Coalesce
 
 --- Original
 +++ New
 @@ @@
-     {
-         self::$client = $client;
      }
--    public function getMethod() : string
-+    protected function getMethod() : string
+     protected function getPostData(string $key) : mixed
      {
-         return 'GET';
+-        return $this->resolvedPostData[$key] ?? null;
++        return null ?? $this->resolvedPostData[$key];
      }
+     protected function doRequest() : mixed
+     {
 
 
-4) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:95    [M] ArrayItemRemoval
+4) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:153    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -61,7 +61,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-5) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:97    [M] ArrayItemRemoval
+5) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:155    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -76,7 +76,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-6) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:98    [M] ArrayItemRemoval
+6) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:156    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -91,7 +91,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-7) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:99    [M] ArrayItemRemoval
+7) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:157    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -106,6 +106,141 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
+8) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:30    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     protected function resolveQueryData(OptionsResolver $resolver) : void
+     {
+         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
+-        $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
++        
+         $resolver->setDefined([self::REQUEST_TAGS]);
+         $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
+     }
+
+
+9) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:33    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
+         $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
+         $resolver->setDefined([self::REQUEST_TAGS]);
+-        $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
++        
+     }
+     protected function getUrlPath() : string
+     {
+
+
+10) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:59    [M] ArrayOneItem
+
+--- Original
++++ New
+@@ @@
+                 $data['tags'][] = ['code' => $tag['code'], 'value' => $tag['value']];
+             }
+         }
+-        return $data;
++        return count($data) > 1 ? array_slice($data, 0, 1, true) : $data;
+     }
+     /**
+      * @return array<SellingPoint>
+
+
+11) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetSellingPointAvailability.php:46    [M] ArrayOneItem
+
+--- Original
++++ New
+@@ @@
+             /* @var DateTimeInterface $date */
+             $data['date'] = $date->format('Y-m-d');
+         }
+-        return $data;
++        return count($data) > 1 ? array_slice($data, 0, 1, true) : $data;
+     }
+     protected function resolveQueryData(OptionsResolver $resolver) : void
+     {
+
+
+12) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetSellingPointMenusAvailability.php:13    [M] TrueValue
+
+--- Original
++++ New
+@@ @@
+ class GetSellingPointMenusAvailability extends GetSellingPointMenus
+ {
+     private const LOAD_PRODUCTS = 'loadProducts';
+-    public function setLoadProducts(bool $loadProducts = true) : void
++    public function setLoadProducts(bool $loadProducts = false) : void
+     {
+         $this->addQueryData(self::LOAD_PRODUCTS, $loadProducts);
+     }
+
+
+13) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetSellingPointMenusAvailability.php:25    [M] ArrayOneItem
+
+--- Original
++++ New
+@@ @@
+         if (null !== ($loadProducts = $this->getQueryData(self::LOAD_PRODUCTS))) {
+             $data['loadProducts'] = $loadProducts;
+         }
+-        return $data;
++        return count($data) > 1 ? array_slice($data, 0, 1, true) : $data;
+     }
+     protected function resolveQueryData(OptionsResolver $resolver) : void
+     {
+
+
+14) /home/lsv/Projects/food-market-integration-wrapper/src/Request/PostOrder.php:44    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     protected function resolvePostData(OptionsResolver $resolver) : void
+     {
+         $resolver->setRequired([self::ORDER]);
+-        $resolver->setAllowedTypes(self::ORDER, PostOrderInterface::class);
++        
+     }
+     protected function getFormData() : ?array
+     {
+
+
+15) /home/lsv/Projects/food-market-integration-wrapper/src/Request/PostOrder.php:51    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     protected function getFormData() : ?array
+     {
+         $serialized = $this->getSerializer()->serialize($this->getPostData(self::ORDER), 'json');
+-        return json_decode($serialized, true, 512, JSON_THROW_ON_ERROR);
++        return json_decode($serialized, true, 511, JSON_THROW_ON_ERROR);
+     }
+     public function getMethod() : string
+     {
+
+
+16) /home/lsv/Projects/food-market-integration-wrapper/src/Request/PostOrder.php:51    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     protected function getFormData() : ?array
+     {
+         $serialized = $this->getSerializer()->serialize($this->getPostData(self::ORDER), 'json');
+-        return json_decode($serialized, true, 512, JSON_THROW_ON_ERROR);
++        return json_decode($serialized, true, 513, JSON_THROW_ON_ERROR);
+     }
+     public function getMethod() : string
+     {
+
+
 Timed Out mutants:
 ==================
 
@@ -115,7 +250,7 @@ Skipped mutants:
 Not Covered mutants:
 ====================
 
-1) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:133    [M] Identical
+1) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:198    [M] Identical
 
 --- Original
 +++ New
@@ -130,7 +265,7 @@ Not Covered mutants:
          if (null === self::$client) {
 
 
-2) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:134    [M] Throw_
+2) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:199    [M] Throw_
 
 --- Original
 +++ New
@@ -145,7 +280,7 @@ Not Covered mutants:
              self::$client = HttpClient::create(['base_uri' => self::$baseUri, 'headers' => ['x-api-server-access-token' => self::$authentication->getServerAccessToken(), 'x-api-user-access-token' => self::$authentication->getUserAccessToken()]]);
 
 
-3) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:137    [M] Identical
+3) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:202    [M] Identical
 
 --- Original
 +++ New
@@ -162,7 +297,7 @@ Not Covered mutants:
  }
 
 
-4) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:138    [M] ArrayItemRemoval
+4) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:203    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -178,7 +313,7 @@ Not Covered mutants:
  }
 
 
-5) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:140    [M] ArrayItemRemoval
+5) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:205    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -194,7 +329,7 @@ Not Covered mutants:
  }
 
 
-6) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:141    [M] ArrayItem
+6) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:206    [M] ArrayItem
 
 --- Original
 +++ New
@@ -210,7 +345,7 @@ Not Covered mutants:
  }
 
 
-7) /home/lsv/Projects/food-market-integration-wrapper/src/Request/Request.php:142    [M] ArrayItem
+7) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:207    [M] ArrayItem
 
 --- Original
 +++ New

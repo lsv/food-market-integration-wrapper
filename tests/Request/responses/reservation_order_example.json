@@ -1,0 +1,71 @@
+{
+    "id": 418825,
+    "orderGroupId": null,
+    "totalAmount": 0.0,
+    "executionTimeLabel": "hoy 23/07 a las 08:57h",
+    "preparationTimeLabel": "hoy 23/07 a las 08:57h",
+    "comment": "This is the order comment!",
+    "cancellationComment": null,
+    "consumer": {
+        "id": 18902,
+        "name": "Client_74214",
+        "lastname": "Lastname_74214",
+        "email": null,
+        "phone": "+34600000000",
+        "image": null,
+        "notificationsChannel": "21ab6add258b161f022c6c63eae13672",
+        "chatToken": null,
+        "marketClientId": null
+    },
+    "status": {
+        "code": "waiting_sp_validation",
+        "name": "Esperando validación del negocio",
+        "color": "#f7981d",
+        "isFinalStatus": false,
+        "globalStatusCode": "processing"
+    },
+    "type": "reservation",
+    "sellingPoint": {
+        "id": 3961,
+        "name": "SuperPizza",
+        "address": {
+            "id": 16187,
+            "street": "Carrer de la Tecnologia, 17",
+            "details": "",
+            "city": "Viladecans",
+            "province": "Barcelona",
+            "postalCode": "08840",
+            "latitude": 41.31372,
+            "longitude": 2.031222,
+            "googlePlaceId": "ChIJRQPl5lmcpBIRXpga-ZW5xvY",
+            "placeName": "Carrer de la Tecnologia, 17, 08840 Viladecans, Barcelona, España",
+            "autoGeolocated": true
+        },
+        "phone": "+34900000000",
+        "email": "superpizza@example.com",
+        "logo": "https://content.sinqro.com/e4cd836538_f79efe5783_82291551976531iconImagesqd2mt.png",
+        "mainImage": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+        "mainImageLarge": "https://content.sinqro.com/1551975570_bab77d7d5bbcec5e64cd3c1ac22c56ee.png",
+        "listImage": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+        "listImageLarge": "https://content.sinqro.com/1551975570_bab77d7d5bbcec5e64cd3c1ac22c56ee.png",
+        "type": "Pizzería",
+        "urlKey": "superpizza-viladecans",
+        "timezone": "Europe/Madrid"
+    },
+    "payments": [],
+    "orderLines": [],
+    "isCancellable": true,
+    "isAcceptable": true,
+    "baseAmount": 0.0,
+    "vatAmount": 0.0,
+    "currency": {
+        "isoCode": "EUR",
+        "symbol": "€",
+        "displayPattern": "{{ amount }}€"
+    },
+    "posOrderId": null,
+    "marketOrderId": "74214",
+    "marketOrderCode": "PAB2YJ",
+    "executionTime": "2020-07-23T06:57:08+0000",
+    "dinersNumber": 2
+}

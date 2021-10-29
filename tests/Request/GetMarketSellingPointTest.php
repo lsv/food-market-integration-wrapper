@@ -8,7 +8,7 @@ use Lsv\FoodMarketIntegration\Request\GetMarketSellingPoint;
 use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointAddress;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class GetMarketSellingPointTest extends AbstractRequest
+class GetMarketSellingPointTest extends AbstractRequestTest
 {
     private const MARKET_ID = '123';
     private const SELLING_POINT = 321;

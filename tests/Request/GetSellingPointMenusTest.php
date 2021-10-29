@@ -8,7 +8,7 @@ use Lsv\FoodMarketIntegration\Request\GetSellingPointMenus;
 use Lsv\FoodMarketIntegration\Response\Menu\Product;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class GetSellingPointMenusTest extends AbstractRequest
+class GetSellingPointMenusTest extends AbstractRequestTest
 {
     private const MARKET_ID = '123';
     private const SELLING_POINT = 321;
@@ -20,6 +20,23 @@ class GetSellingPointMenusTest extends AbstractRequest
         $this->testObject = new GetSellingPointMenus(self::MARKET_ID, self::SELLING_POINT);
     }
 
+    public function testCanSetOptionals(): void
+    {
+        $responses = [
+            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
+        ];
+        self::setRequest($responses);
+
+        $date = new \DateTime('2021-12-15');
+        $this->testObject->setDate($date);
+        $this->testObject->setOrderType('order');
+        $this->testObject->request();
+        self::assertSame(
+            '/markets/123/sellingPoints/321/menus?date=2021-12-15&orderType=order',
+            $this->testObject->getRequestUrl()
+        );
+    }
+
     public function testCanGetResponse(): void
     {
         $responses = [
@@ -28,6 +45,11 @@ class GetSellingPointMenusTest extends AbstractRequest
         self::setRequest($responses);
 
         $data = $this->testObject->request();
+        self::assertSame(
+            '/markets/123/sellingPoints/321/menus',
+            $this->testObject->getRequestUrl()
+        );
+
         self::assertCount(1, $data);
         $menu = $data[0];
         self::assertSame(10674, $menu->id);

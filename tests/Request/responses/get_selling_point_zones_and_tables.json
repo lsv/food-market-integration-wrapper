@@ -1,0 +1,114 @@
+[
+    {
+        "code": "TZ",
+        "name": "Terraza",
+        "serviceLocations": [
+            {
+                "code": "TZ1",
+                "name": "Mesa 1"
+            },
+            {
+                "code": "TZ2",
+                "name": "Mesa 2"
+            },
+            {
+                "code": "TZ3",
+                "name": "Mesa 3"
+            },
+            {
+                "code": "TZ4",
+                "name": "Mesa 4"
+            },
+            {
+                "code": "TZ5",
+                "name": "Mesa 5"
+            },
+            {
+                "code": "TZ6",
+                "name": "Mesa 6"
+            },
+            {
+                "code": "TZ7",
+                "name": "Mesa 7"
+            },
+            {
+                "code": "TZ8",
+                "name": "Mesa 8"
+            },
+            {
+                "code": "TZ9",
+                "name": "Mesa 9"
+            },
+            {
+                "code": "TZ10",
+                "name": "Mesa 10"
+            },
+            {
+                "code": "TZ11",
+                "name": "Mesa 11"
+            },
+            {
+                "code": "TZ12",
+                "name": "Mesa 12"
+            },
+            {
+                "code": "TZ13",
+                "name": "Mesa 13"
+            },
+            {
+                "code": "TZ14",
+                "name": "Mesa 14"
+            },
+            {
+                "code": "TZ15",
+                "name": "Mesa 15"
+            },
+            {
+                "code": "TZ16",
+                "name": "Mesa 16"
+            },
+            {
+                "code": "TZ17",
+                "name": "Mesa 17"
+            },
+            {
+                "code": "TZ18",
+                "name": "Mesa 18"
+            },
+            {
+                "code": "TZ19",
+                "name": "Mesa 19"
+            },
+            {
+                "code": "TZ20",
+                "name": "Mesa 20"
+            }
+        ]
+    },
+    {
+        "code": "BAR",
+        "name": "Bar",
+        "serviceLocations": [
+            {
+                "code": "BAR1",
+                "name": "Mesa 1"
+            },
+            {
+                "code": "BAR2",
+                "name": "Mesa 2"
+            },
+            {
+                "code": "BAR3",
+                "name": "Mesa 3"
+            },
+            {
+                "code": "BAR4",
+                "name": "Mesa 4"
+            },
+            {
+                "code": "BAR5",
+                "name": "Mesa 5"
+            }
+        ]
+    }
+]

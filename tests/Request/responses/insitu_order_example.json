@@ -1,0 +1,161 @@
+{
+    "id": 418808,
+    "orderGroupId": null,
+    "totalAmount": 55.0,
+    "executionTimeLabel": "hoy 23/07 a las 08:57h",
+    "preparationTimeLabel": "hoy 23/07 a las 08:57h",
+    "comment": "This is the order comment!",
+    "cancellationComment": null,
+    "consumer": {
+        "id": 18901,
+        "name": "Client_34266",
+        "lastname": "Lastname_34266",
+        "email": null,
+        "phone": "+34600000000",
+        "image": null,
+        "notificationsChannel": "eb6f578f112877ec274a1dc0eb946a15",
+        "chatToken": null,
+        "marketClientId": null
+    },
+    "status": {
+        "code": "waiting_sp_validation",
+        "name": "Esperando validación del negocio",
+        "color": "#f7981d",
+        "isFinalStatus": false,
+        "globalStatusCode": "processing"
+    },
+    "type": "insitu",
+    "sellingPoint": {
+        "id": 3961,
+        "name": "SuperPizza",
+        "address": {
+            "id": 16187,
+            "street": "Carrer de la Tecnologia, 17",
+            "details": "",
+            "city": "Viladecans",
+            "province": "Barcelona",
+            "postalCode": "08840",
+            "latitude": 41.31372,
+            "longitude": 2.031222,
+            "googlePlaceId": "ChIJRQPl5lmcpBIRXpga-ZW5xvY",
+            "placeName": "Carrer de la Tecnologia, 17, 08840 Viladecans, Barcelona, España",
+            "autoGeolocated": true
+        },
+        "phone": "+34900000000",
+        "email": "superpizza@example.com",
+        "logo": "https://content.sinqro.com/e4cd836538_f79efe5783_82291551976531iconImagesqd2mt.png",
+        "mainImage": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+        "mainImageLarge": "https://content.sinqro.com/1551975570_bab77d7d5bbcec5e64cd3c1ac22c56ee.png",
+        "listImage": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+        "listImageLarge": "https://content.sinqro.com/1551975570_bab77d7d5bbcec5e64cd3c1ac22c56ee.png",
+        "type": "Pizzería",
+        "urlKey": "superpizza-viladecans",
+        "timezone": "Europe/Madrid"
+    },
+    "payments": [
+        {
+            "id": 54714,
+            "amount": 55.0,
+            "paymentMethodName": "Efectivo",
+            "prepaid": false
+        }
+    ],
+    "orderLines": [
+        {
+            "type": "PRODUCT",
+            "totalAmount": 25.0,
+            "unitPrice": 12.5,
+            "quantity": 2,
+            "label": "Pizza de la huerta",
+            "comment": null,
+            "childrenOrderLines": [
+                {
+                    "type": "PRODUCT_OPTION",
+                    "totalAmount": 1.5,
+                    "unitPrice": 1.5,
+                    "quantity": 1,
+                    "label": "Jamón Serrano",
+                    "comment": null,
+                    "childrenOrderLines": [],
+                    "baseAmount": 1.36,
+                    "vatAmount": 0.14,
+                    "vatValue": 10,
+                    "productOption": {
+                        "id": 234817,
+                        "externalId": null
+                    }
+                }
+            ],
+            "baseAmount": 22.73,
+            "vatAmount": 2.27,
+            "vatValue": 10,
+            "product": {
+                "id": 109838,
+                "externalId": null
+            }
+        },
+        {
+            "type": "PRODUCT",
+            "totalAmount": 27.0,
+            "unitPrice": 13.5,
+            "quantity": 2,
+            "label": "Pizza Barbacoa",
+            "comment": null,
+            "childrenOrderLines": [
+                {
+                    "type": "PRODUCT_OPTION",
+                    "totalAmount": 1.0,
+                    "unitPrice": 1.0,
+                    "quantity": 1,
+                    "label": "Bacon",
+                    "comment": null,
+                    "childrenOrderLines": [],
+                    "baseAmount": 0.91,
+                    "vatAmount": 0.09,
+                    "vatValue": 10,
+                    "productOption": {
+                        "id": 234816,
+                        "externalId": null
+                    }
+                }
+            ],
+            "baseAmount": 24.55,
+            "vatAmount": 2.45,
+            "vatValue": 10,
+            "product": {
+                "id": 109840,
+                "externalId": null
+            }
+        },
+        {
+            "type": "PRODUCT",
+            "totalAmount": 3.0,
+            "unitPrice": 1.5,
+            "quantity": 2,
+            "label": "Agua 0.5L",
+            "comment": "Comment 1",
+            "childrenOrderLines": [],
+            "baseAmount": 2.73,
+            "vatAmount": 0.27,
+            "vatValue": 10,
+            "product": {
+                "id": 109841,
+                "externalId": null
+            }
+        }
+    ],
+    "isCancellable": true,
+    "isAcceptable": true,
+    "baseAmount": 50.01,
+    "vatAmount": 4.99,
+    "currency": {
+        "isoCode": "EUR",
+        "symbol": "€",
+        "displayPattern": "{{ amount }}€"
+    },
+    "posOrderId": null,
+    "marketOrderId": "34266",
+    "marketOrderCode": "J1YMJA",
+    "executionTime": "2020-07-23T06:57:00+0000",
+    "dinersNumber": 4
+}

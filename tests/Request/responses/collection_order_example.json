@@ -1,0 +1,160 @@
+{
+    "id": 418791,
+    "orderGroupId": null,
+    "totalAmount": 41.35,
+    "executionTimeLabel": "hoy 23/07 a las 08:56h",
+    "preparationTimeLabel": "hoy 23/07 a las 08:56h",
+    "comment": "This is the order comment!",
+    "cancellationComment": null,
+    "consumer": {
+        "id": 18900,
+        "name": "Client_52405",
+        "lastname": "Lastname_52405",
+        "email": null,
+        "phone": "+34600000000",
+        "image": null,
+        "notificationsChannel": "8068827f3ae88d499d52ebcc05f82c33",
+        "chatToken": null,
+        "marketClientId": null
+    },
+    "status": {
+        "code": "waiting_sp_validation",
+        "name": "Esperando validación del negocio",
+        "color": "#f7981d",
+        "isFinalStatus": false,
+        "globalStatusCode": "processing"
+    },
+    "type": "collection",
+    "sellingPoint": {
+        "id": 3961,
+        "name": "SuperPizza",
+        "address": {
+            "id": 16187,
+            "street": "Carrer de la Tecnologia, 17",
+            "details": "",
+            "city": "Viladecans",
+            "province": "Barcelona",
+            "postalCode": "08840",
+            "latitude": 41.31372,
+            "longitude": 2.031222,
+            "googlePlaceId": "ChIJRQPl5lmcpBIRXpga-ZW5xvY",
+            "placeName": "Carrer de la Tecnologia, 17, 08840 Viladecans, Barcelona, España",
+            "autoGeolocated": true
+        },
+        "phone": "+34900000000",
+        "email": "superpizza@example.com",
+        "logo": "https://content.sinqro.com/e4cd836538_f79efe5783_82291551976531iconImagesqd2mt.png",
+        "mainImage": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+        "mainImageLarge": "https://content.sinqro.com/1551975570_bab77d7d5bbcec5e64cd3c1ac22c56ee.png",
+        "listImage": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+        "listImageLarge": "https://content.sinqro.com/1551975570_bab77d7d5bbcec5e64cd3c1ac22c56ee.png",
+        "type": "Pizzería",
+        "urlKey": "superpizza-viladecans",
+        "timezone": "Europe/Madrid"
+    },
+    "payments": [
+        {
+            "id": 54713,
+            "amount": 41.35,
+            "paymentMethodName": "Efectivo",
+            "prepaid": false
+        }
+    ],
+    "orderLines": [
+        {
+            "type": "PRODUCT",
+            "totalAmount": 24.9,
+            "unitPrice": 12.45,
+            "quantity": 2,
+            "label": "Pizza 4 quesos",
+            "comment": null,
+            "childrenOrderLines": [
+                {
+                    "type": "PRODUCT_OPTION",
+                    "totalAmount": 0.5,
+                    "unitPrice": 0.5,
+                    "quantity": 1,
+                    "label": "Cebolla",
+                    "comment": null,
+                    "childrenOrderLines": [],
+                    "baseAmount": 0.45,
+                    "vatAmount": 0.05,
+                    "vatValue": 10,
+                    "productOption": {
+                        "id": 234820,
+                        "externalId": null
+                    }
+                }
+            ],
+            "baseAmount": 22.64,
+            "vatAmount": 2.26,
+            "vatValue": 10,
+            "product": {
+                "id": 109837,
+                "externalId": null
+            }
+        },
+        {
+            "type": "PRODUCT",
+            "totalAmount": 13.45,
+            "unitPrice": 13.45,
+            "quantity": 1,
+            "label": "Pizza 4 estaciones",
+            "comment": "Comment 1",
+            "childrenOrderLines": [
+                {
+                    "type": "PRODUCT_OPTION",
+                    "totalAmount": 0.5,
+                    "unitPrice": 0.5,
+                    "quantity": 1,
+                    "label": "Cebolla",
+                    "comment": null,
+                    "childrenOrderLines": [],
+                    "baseAmount": 0.45,
+                    "vatAmount": 0.05,
+                    "vatValue": 10,
+                    "productOption": {
+                        "id": 234820,
+                        "externalId": null
+                    }
+                }
+            ],
+            "baseAmount": 12.23,
+            "vatAmount": 1.22,
+            "vatValue": 10,
+            "product": {
+                "id": 109839,
+                "externalId": null
+            }
+        },
+        {
+            "type": "PRODUCT",
+            "totalAmount": 3.0,
+            "unitPrice": 1.5,
+            "quantity": 2,
+            "label": "Agua 0.5L",
+            "comment": null,
+            "childrenOrderLines": [],
+            "baseAmount": 2.73,
+            "vatAmount": 0.27,
+            "vatValue": 10,
+            "product": {
+                "id": 109841,
+                "externalId": null
+            }
+        }
+    ],
+    "isCancellable": true,
+    "isAcceptable": true,
+    "baseAmount": 37.6,
+    "vatAmount": 3.75,
+    "currency": {
+        "isoCode": "EUR",
+        "symbol": "€",
+        "displayPattern": "{{ amount }}€"
+    },
+    "posOrderId": null,
+    "marketOrderId": "52405",
+    "marketOrderCode": "UGCBAX",
+    "executionTime": "2020-07-23T06:56:57+0000"
+}

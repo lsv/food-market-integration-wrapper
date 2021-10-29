@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Response\ResponseError;
-use Lsv\FoodMarketIntegration\Response\SellingPoint;
+use Lsv\FoodMarketIntegrationTest\Request\SellingPointException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GetMarketSellingPoint extends AbstractRequest
+class GetSellingPointClosingExceptions extends AbstractRequest
 {
     private const MARKET_CODE_IDENTIFIER = 'marketCode';
     private const MARKET_SELLING_POINT = 'sellingCode';
@@ -22,7 +22,7 @@ class GetMarketSellingPoint extends AbstractRequest
     protected function getUrlPath(): string
     {
         return sprintf(
-            '/markets/%s/sellingPoints/%s',
+            '/markets/%s/sellingPoints/%d/exceptions/next',
             $this->getQueryData(self::MARKET_CODE_IDENTIFIER),
             $this->getQueryData(self::MARKET_SELLING_POINT)
         );
@@ -38,13 +38,18 @@ class GetMarketSellingPoint extends AbstractRequest
         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER, self::MARKET_SELLING_POINT]);
     }
 
-    protected function handleResponse(string $content): SellingPoint
+    /**
+     * @return SellingPointException[]
+     */
+    protected function handleResponse(string $content): array
     {
-        return $this->getSerializer()
-            ->deserialize($content, SellingPoint::class, 'json');
+        return $this->getSerializer()->deserialize($content, SellingPointException::class.'[]', 'json');
     }
 
-    public function request(): ResponseError|SellingPoint
+    /**
+     * @return ResponseError|SellingPointException[]
+     */
+    public function request(): ResponseError|array
     {
         return $this->doRequest();
     }

@@ -5,28 +5,26 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Model\RequestTags;
-use Lsv\FoodMarketIntegration\Response\Error;
+use Lsv\FoodMarketIntegration\Response\ResponseError;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GetMarketSellingPoints extends Request
+class GetMarketSellingPoints extends AbstractRequest
 {
     private const MARKET_CODE_IDENTIFIER = 'marketCodeIdentifier';
     private const REQUEST_TAGS = 'tags';
 
     public function __construct(string $marketCodeIdentifier)
     {
-        $this->queryData[self::MARKET_CODE_IDENTIFIER] = $marketCodeIdentifier;
+        $this->addQueryData(self::MARKET_CODE_IDENTIFIER, $marketCodeIdentifier);
     }
 
-    public function setRequestTags(RequestTags $requestTags): self
+    public function setRequestTags(RequestTags $requestTags): void
     {
-        $this->queryData[self::REQUEST_TAGS] = $requestTags;
-
-        return $this;
+        $this->addQueryData(self::REQUEST_TAGS, $requestTags);
     }
 
-    protected function queryData(OptionsResolver $resolver): void
+    protected function resolveQueryData(OptionsResolver $resolver): void
     {
         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER]);
         $resolver->setAllowedTypes(self::MARKET_CODE_IDENTIFIER, 'string');
@@ -35,31 +33,30 @@ class GetMarketSellingPoints extends Request
         $resolver->setAllowedTypes(self::REQUEST_TAGS, RequestTags::class);
     }
 
-    /**
-     * @param array<string, mixed> $queryData
-     */
-    protected function getUrl(array $queryData): string
+    protected function getUrlPath(): string
     {
-        $url = sprintf(
+        return sprintf(
             '/markets/%s/sellingPoints',
-            $queryData[self::MARKET_CODE_IDENTIFIER]
+            $this->getQueryData(self::MARKET_CODE_IDENTIFIER)
         );
+    }
 
-        if (isset($queryData[self::REQUEST_TAGS]) && $queryData[self::REQUEST_TAGS]) {
-            /** @var RequestTags $requestTags */
-            $requestTags = $queryData[self::REQUEST_TAGS];
-            $data = [];
+    protected function getUrlQuery(): array
+    {
+        $data = [];
+
+        /** @var RequestTags $requestTags */
+        $requestTags = $this->getQueryData(self::REQUEST_TAGS);
+        if (null !== $requestTags) {
             foreach ($requestTags->getTags() as $tag) {
                 $data['tags'][] = [
                     'code' => $tag['code'],
                     'value' => $tag['value'],
                 ];
             }
-
-            $url .= '?'.http_build_query($data);
         }
 
-        return $url;
+        return $data;
     }
 
     /**
@@ -72,9 +69,9 @@ class GetMarketSellingPoints extends Request
     }
 
     /**
-     * @return Error|array<SellingPoint>
+     * @return ResponseError|array<SellingPoint>
      */
-    public function request(): Error|array
+    public function request(): ResponseError|array
     {
         return $this->doRequest();
     }
