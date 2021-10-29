@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Response;
 
+use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointAddress;
+use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointSchedule;
+use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointTags;
+
 class SellingPoint
 {
     public int $id;

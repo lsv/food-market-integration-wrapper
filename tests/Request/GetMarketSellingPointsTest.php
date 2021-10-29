@@ -6,9 +6,11 @@ namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Model\RequestTags;
 use Lsv\FoodMarketIntegration\Request\GetMarketSellingPoints;
+use Lsv\FoodMarketIntegration\Response\Error;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
-use Lsv\FoodMarketIntegration\Response\SellingPointAddress;
-use Lsv\FoodMarketIntegration\Response\SellingPointTags;
+use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointAddress;
+use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointTags;
+use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
 class GetMarketSellingPointsTest extends AbstractRequest
@@ -22,7 +24,38 @@ class GetMarketSellingPointsTest extends AbstractRequest
         $this->testObject = new GetMarketSellingPoints(self::MARKET_ID);
     }
 
-    public function testCanMakeResponse(): void
+    public function testThrowsKnownException(): void
+    {
+        $responses = [
+            new MockResponse(file_get_contents(__DIR__.'/responses/throws_error.json'), [
+                'http_code' => 400,
+            ]),
+        ];
+        self::setRequest($responses);
+        $data = $this->testObject->request();
+        self::assertInstanceOf(Error::class, $data);
+        self::assertCount(1, $data->errors);
+        self::assertInstanceOf(Error\Error::class, $data->errors[0]);
+        self::assertSame('ERROR_CODE_EXAMPLE', $data->errors[0]->code);
+        self::assertSame('Error message', $data->errors[0]->message);
+        self::assertSame('ERROR_CODE_EXAMPLE', $data->code);
+        self::assertSame('Error message', $data->message);
+        self::assertSame('400', $data->httpResponseCode);
+    }
+
+    public function testThrowsException(): void
+    {
+        $this->expectException(ClientException::class);
+        $responses = [
+            new MockResponse(file_get_contents(__DIR__.'/responses/throws_error.json'), [
+                'http_code' => 404,
+            ]),
+        ];
+        self::setRequest($responses);
+        $this->testObject->request();
+    }
+
+    public function testCanGetResponse(): void
     {
         $responses = [
             new MockResponse(file_get_contents(__DIR__.'/responses/get_market_selling_points.json')),
@@ -42,17 +75,55 @@ class GetMarketSellingPointsTest extends AbstractRequest
         self::assertCount(1, $data);
         $obj = $data[0];
         self::assertInstanceOf(SellingPoint::class, $obj);
-        self::assertSame(3442, $obj->id);
+        $this->responseObjectTest($obj, [
+            'id' => 3442,
+            'name' => 'My restaurant',
+            'phone' => '+34600000000',
+            'email' => 'myrestaurant@example.com',
+            'logo' => 'http://mycdn.com/selling-point-logo.jpeg',
+            'mainImage' => 'http://mycdn.com/selling-point-main-image.jpeg',
+            'listImage' => 'http://mycdn.com/selling-point-list-image.jpeg',
+            'urlKey' => 'restaurant-name-city',
+            'type' => 'Italian',
+            'timezone' => 'Europe/Madrid',
+            'description' => 'This restaurant...',
+        ]);
+
         self::assertInstanceOf(SellingPointAddress::class, $obj->address);
-        self::assertSame(1003, $obj->address->id);
+        $this->responseObjectTest($obj->address, [
+            'id' => 1003,
+            'street' => 'C/ Example, 23',
+            'details' => 'Canada building',
+            'city' => 'City name',
+            'province' => 'Province name',
+            'postalCode' => '12345',
+            'latitude' => 41.308166,
+            'longitude' => 2.019725,
+            'googlePlaceId' => 'xxxxxxxxxxxx',
+            'placeName' => 'C/ Example, 23, City name',
+        ]);
+
+        self::assertInstanceOf(SellingPoint\SellingPointSchedule::class, $obj->schedule);
+        self::assertSame(2113, $obj->schedule->id);
         self::assertCount(1, $obj->schedule->ranges);
         $range = $obj->schedule->ranges[0];
-        self::assertSame('06:00:00', $range->startTime);
+        $this->responseObjectTest($range, [
+            'startTime' => '06:00:00',
+            'endTime' => '18:00:00',
+            'timezone' => 'Europe/Madrid',
+        ]);
+        self::assertInstanceOf(SellingPoint\SellingPointScheduleRangeDay::class, $range->startDay);
         self::assertSame(1, $range->startDay->id);
+        self::assertSame('Lunes', $range->startDay->name);
+        self::assertInstanceOf(SellingPoint\SellingPointScheduleRangeDay::class, $range->endDay);
+        self::assertSame(1, $range->startDay->id);
+        self::assertSame('Lunes', $range->startDay->name);
+
         self::assertCount(2, $obj->allowedOrderTypes);
         self::assertCount(1, $obj->tags);
         $tag = $obj->tags[0];
         self::assertInstanceOf(SellingPointTags::class, $tag);
         self::assertSame('Veggie', $tag->name);
+        self::assertSame('veggie', $tag->code);
     }
 }

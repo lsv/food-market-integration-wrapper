@@ -22,4 +22,13 @@ abstract class AbstractRequest extends TestCase
         Request::setAuthentication(self::getAuthenticate());
         Request::setHttpClient($client);
     }
+
+    abstract public function testCanGetResponse(): void;
+
+    public function responseObjectTest(object $object, array $tests): void
+    {
+        foreach ($tests as $key => $value) {
+            self::assertSame($value, $object->{$key});
+        }
+    }
 }

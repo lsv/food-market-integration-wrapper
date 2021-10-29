@@ -1,0 +1,612 @@
+[
+    {
+        "id": 10674,
+        "externalId": null,
+        "name": "Nuestra carta",
+        "price": null,
+        "type": "menu",
+        "shortDescription": "Nuestra carta de pizzas",
+        "position": 0,
+        "availableFrom": "2020-07-23T00:00:00+0000",
+        "availableTo": null,
+        "menuSections": [
+            {
+                "id": 8398,
+                "externalId": null,
+                "name": "Recomendaciones del cheff",
+                "shortDescription": null,
+                "image": null,
+                "position": 0,
+                "showProductImages": true,
+                "maxSelection": 0,
+                "minSelection": 0,
+                "selectionLabel": "",
+                "products": [
+                    {
+                        "id": 109837,
+                        "externalId": null,
+                        "urlKey": "109837-pizza-4-quesos",
+                        "name": "Pizza 4 quesos",
+                        "shortDescription": "",
+                        "description": "",
+                        "image": "https://content.sinqro.com/d770d57632_4e01533575_85091551975570baked-cheese-cherry-tomato-1552635.png",
+                        "price": 11.95,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [
+                            {
+                                "id": 13327,
+                                "externalId": null,
+                                "name": "¿Quieres añadir algo?",
+                                "shortDescription": null,
+                                "position": 3,
+                                "maxSelection": null,
+                                "maxSameOptionSelection": null,
+                                "minSelection": null,
+                                "selectionLabel": "",
+                                "productOptions": [
+                                    {
+                                        "id": 234816,
+                                        "externalId": null,
+                                        "name": "Bacon",
+                                        "shortDescription": null,
+                                        "position": 1,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234817,
+                                        "externalId": null,
+                                        "name": "Jamón Serrano",
+                                        "shortDescription": null,
+                                        "position": 2,
+                                        "price": 1.5,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234818,
+                                        "externalId": null,
+                                        "name": "Champiñones",
+                                        "shortDescription": null,
+                                        "position": 3,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234819,
+                                        "externalId": null,
+                                        "name": "Huevo duro",
+                                        "shortDescription": null,
+                                        "position": 4,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234820,
+                                        "externalId": null,
+                                        "name": "Cebolla",
+                                        "shortDescription": null,
+                                        "position": 5,
+                                        "price": 0.5,
+                                        "isAvailable": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "public": true,
+                        "featured": false
+                    },
+                    {
+                        "id": 109838,
+                        "externalId": null,
+                        "urlKey": "109838-pizza-de-la-huerta",
+                        "name": "Pizza de la huerta",
+                        "shortDescription": "Con verduras de nuestro huerto",
+                        "description": "",
+                        "image": "https://content.sinqro.com/9119985658_cf48234047_79231551975571cheese-cooking-crispy-263041.png",
+                        "price": 11.0,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [
+                            {
+                                "id": 13327,
+                                "externalId": null,
+                                "name": "¿Quieres añadir algo?",
+                                "shortDescription": null,
+                                "position": 3,
+                                "maxSelection": null,
+                                "maxSameOptionSelection": null,
+                                "minSelection": null,
+                                "selectionLabel": "",
+                                "productOptions": [
+                                    {
+                                        "id": 234816,
+                                        "externalId": null,
+                                        "name": "Bacon",
+                                        "shortDescription": null,
+                                        "position": 1,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234817,
+                                        "externalId": null,
+                                        "name": "Jamón Serrano",
+                                        "shortDescription": null,
+                                        "position": 2,
+                                        "price": 1.5,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234818,
+                                        "externalId": null,
+                                        "name": "Champiñones",
+                                        "shortDescription": null,
+                                        "position": 3,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234819,
+                                        "externalId": null,
+                                        "name": "Huevo duro",
+                                        "shortDescription": null,
+                                        "position": 4,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234820,
+                                        "externalId": null,
+                                        "name": "Cebolla",
+                                        "shortDescription": null,
+                                        "position": 5,
+                                        "price": 0.5,
+                                        "isAvailable": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "public": true,
+                        "featured": false
+                    }
+                ]
+            },
+            {
+                "id": 8399,
+                "externalId": null,
+                "name": "Las clásicas",
+                "shortDescription": null,
+                "image": null,
+                "position": 1,
+                "showProductImages": true,
+                "maxSelection": 0,
+                "minSelection": 0,
+                "selectionLabel": "",
+                "products": [
+                    {
+                        "id": 109839,
+                        "externalId": null,
+                        "urlKey": "109839-pizza-4-estaciones",
+                        "name": "Pizza 4 estaciones",
+                        "shortDescription": "",
+                        "description": "",
+                        "image": "https://content.sinqro.com/9119987668_cf48237359_28351551975571cheese-cooking-cuisine-845812.png",
+                        "price": 12.95,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [
+                            {
+                                "id": 13327,
+                                "externalId": null,
+                                "name": "¿Quieres añadir algo?",
+                                "shortDescription": null,
+                                "position": 3,
+                                "maxSelection": null,
+                                "maxSameOptionSelection": null,
+                                "minSelection": null,
+                                "selectionLabel": "",
+                                "productOptions": [
+                                    {
+                                        "id": 234816,
+                                        "externalId": null,
+                                        "name": "Bacon",
+                                        "shortDescription": null,
+                                        "position": 1,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234817,
+                                        "externalId": null,
+                                        "name": "Jamón Serrano",
+                                        "shortDescription": null,
+                                        "position": 2,
+                                        "price": 1.5,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234818,
+                                        "externalId": null,
+                                        "name": "Champiñones",
+                                        "shortDescription": null,
+                                        "position": 3,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234819,
+                                        "externalId": null,
+                                        "name": "Huevo duro",
+                                        "shortDescription": null,
+                                        "position": 4,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234820,
+                                        "externalId": null,
+                                        "name": "Cebolla",
+                                        "shortDescription": null,
+                                        "position": 5,
+                                        "price": 0.5,
+                                        "isAvailable": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "public": true,
+                        "featured": false
+                    },
+                    {
+                        "id": 109840,
+                        "externalId": null,
+                        "urlKey": "109840-pizza-barbacoa",
+                        "name": "Pizza Barbacoa",
+                        "shortDescription": "",
+                        "description": "",
+                        "image": "https://content.sinqro.com/d770d55550_2176741739_77361551975572cheese-crust-delicious-532779.png",
+                        "price": 12.5,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [
+                            {
+                                "id": 13327,
+                                "externalId": null,
+                                "name": "¿Quieres añadir algo?",
+                                "shortDescription": null,
+                                "position": 3,
+                                "maxSelection": null,
+                                "maxSameOptionSelection": null,
+                                "minSelection": null,
+                                "selectionLabel": "",
+                                "productOptions": [
+                                    {
+                                        "id": 234816,
+                                        "externalId": null,
+                                        "name": "Bacon",
+                                        "shortDescription": null,
+                                        "position": 1,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234817,
+                                        "externalId": null,
+                                        "name": "Jamón Serrano",
+                                        "shortDescription": null,
+                                        "position": 2,
+                                        "price": 1.5,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234818,
+                                        "externalId": null,
+                                        "name": "Champiñones",
+                                        "shortDescription": null,
+                                        "position": 3,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234819,
+                                        "externalId": null,
+                                        "name": "Huevo duro",
+                                        "shortDescription": null,
+                                        "position": 4,
+                                        "price": 1.0,
+                                        "isAvailable": true
+                                    },
+                                    {
+                                        "id": 234820,
+                                        "externalId": null,
+                                        "name": "Cebolla",
+                                        "shortDescription": null,
+                                        "position": 5,
+                                        "price": 0.5,
+                                        "isAvailable": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "public": true,
+                        "featured": false
+                    }
+                ]
+            },
+            {
+                "id": 8400,
+                "externalId": null,
+                "name": "Bebidas",
+                "shortDescription": null,
+                "image": null,
+                "position": 2,
+                "showProductImages": false,
+                "maxSelection": 0,
+                "minSelection": 0,
+                "selectionLabel": "",
+                "products": [
+                    {
+                        "id": 109841,
+                        "externalId": null,
+                        "urlKey": "109841-agua-05l",
+                        "name": "Agua 0.5L",
+                        "shortDescription": null,
+                        "description": null,
+                        "image": null,
+                        "price": 1.5,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [],
+                        "public": true,
+                        "featured": false
+                    },
+                    {
+                        "id": 109842,
+                        "externalId": null,
+                        "urlKey": "109842-cerveza-33cl",
+                        "name": "Cerveza 33cl",
+                        "shortDescription": null,
+                        "description": null,
+                        "image": null,
+                        "price": 2.0,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [],
+                        "public": true,
+                        "featured": false
+                    },
+                    {
+                        "id": 109843,
+                        "externalId": null,
+                        "urlKey": "109843-refresco-limon",
+                        "name": "Refresco limón",
+                        "shortDescription": null,
+                        "description": null,
+                        "image": null,
+                        "price": 2.0,
+                        "minOrderPreparationMinutes": 0,
+                        "minMinutesOrderInAdvance": 0,
+                        "tags": [],
+                        "parentName": null,
+                        "isAvailable": true,
+                        "productVariants": [],
+                        "productOptionsCategories": [],
+                        "public": true,
+                        "featured": false
+                    }
+                ]
+            }
+        ],
+        "allowedOrderTypes": [
+            "collection",
+            "delivery",
+            "insitu",
+            "inside"
+        ],
+        "scheduleLabel": "de 11h a 16h y de 20h a 23.30h",
+        "schedule": {
+            "id": 1193,
+            "ranges": [
+                {
+                    "startTime": "19:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 1,
+                        "name": "Lunes"
+                    },
+                    "endDay": {
+                        "id": 1,
+                        "name": "Lunes"
+                    }
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "16:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 2,
+                        "name": "Martes"
+                    },
+                    "endDay": {
+                        "id": 2,
+                        "name": "Martes"
+                    }
+                },
+                {
+                    "startTime": "20:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 2,
+                        "name": "Martes"
+                    },
+                    "endDay": {
+                        "id": 2,
+                        "name": "Martes"
+                    }
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "16:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 3,
+                        "name": "Miércoles"
+                    },
+                    "endDay": {
+                        "id": 3,
+                        "name": "Miércoles"
+                    }
+                },
+                {
+                    "startTime": "20:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 3,
+                        "name": "Miércoles"
+                    },
+                    "endDay": {
+                        "id": 3,
+                        "name": "Miércoles"
+                    }
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "16:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 4,
+                        "name": "Jueves"
+                    },
+                    "endDay": {
+                        "id": 4,
+                        "name": "Jueves"
+                    }
+                },
+                {
+                    "startTime": "20:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 4,
+                        "name": "Jueves"
+                    },
+                    "endDay": {
+                        "id": 4,
+                        "name": "Jueves"
+                    }
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "16:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 5,
+                        "name": "Viernes"
+                    },
+                    "endDay": {
+                        "id": 5,
+                        "name": "Viernes"
+                    }
+                },
+                {
+                    "startTime": "20:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 5,
+                        "name": "Viernes"
+                    },
+                    "endDay": {
+                        "id": 5,
+                        "name": "Viernes"
+                    }
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "17:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 6,
+                        "name": "Sábado"
+                    },
+                    "endDay": {
+                        "id": 6,
+                        "name": "Sábado"
+                    }
+                },
+                {
+                    "startTime": "20:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 6,
+                        "name": "Sábado"
+                    },
+                    "endDay": {
+                        "id": 6,
+                        "name": "Sábado"
+                    }
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "17:00",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 7,
+                        "name": "Domingo"
+                    },
+                    "endDay": {
+                        "id": 7,
+                        "name": "Domingo"
+                    }
+                },
+                {
+                    "startTime": "20:00",
+                    "endTime": "23:30",
+                    "timezone": "Europe/Madrid",
+                    "startDay": {
+                        "id": 7,
+                        "name": "Domingo"
+                    },
+                    "endDay": {
+                        "id": 7,
+                        "name": "Domingo"
+                    }
+                }
+            ]
+        },
+        "urlKey": "10674-nuestra-carta",
+        "hasSelection": true,
+        "selectionAvailable": true,
+        "selectionExpired": false,
+        "selectionUpcoming": false
+    }
+]

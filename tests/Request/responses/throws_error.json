@@ -1,0 +1,11 @@
+{
+    "errors": [
+        {
+            "code": "ERROR_CODE_EXAMPLE",
+            "message": "Error message"
+        }
+    ],
+    "code": "ERROR_CODE_EXAMPLE",
+    "message": "Error message",
+    "httpResponseCode": "400"
+}

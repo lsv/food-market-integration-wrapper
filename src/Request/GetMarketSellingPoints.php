@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Model\RequestTags;
+use Lsv\FoodMarketIntegration\Response\Error;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class GetMarketSellingPoints extends Request
 {
@@ -65,16 +65,16 @@ class GetMarketSellingPoints extends Request
     /**
      * @return array<SellingPoint>
      */
-    protected function handleResponse(ResponseInterface $response): array
+    protected function handleResponse(string $content): array
     {
         return $this->getSerializer()
-            ->deserialize($response->getContent(true), SellingPoint::class.'[]', 'json');
+            ->deserialize($content, SellingPoint::class.'[]', 'json');
     }
 
     /**
-     * @return array<SellingPoint>
+     * @return Error|array<SellingPoint>
      */
-    public function request(): array
+    public function request(): Error|array
     {
         return $this->doRequest();
     }

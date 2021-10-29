@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Response\Error;
-use Lsv\FoodMarketIntegration\Response\SellingPoint;
+use Lsv\FoodMarketIntegration\Response\Menu;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GetMarketSellingPoint extends Request
+class GetSellingPointMenus extends Request
 {
     private const MARKET_CODE_IDENTIFIER = 'marketCode';
     private const MARKET_SELLING_POINT = 'sellingCode';
@@ -19,12 +19,20 @@ class GetMarketSellingPoint extends Request
         $this->queryData[self::MARKET_SELLING_POINT] = $sellingPointId;
     }
 
+    /**
+     * @return Error|Menu[]
+     */
+    public function request(): Error|array
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrl(array $queryData): string
     {
         return sprintf(
-            '/markets/%s/sellingPoints/%s',
-            $queryData[self::MARKET_CODE_IDENTIFIER],
-            $queryData[self::MARKET_SELLING_POINT]
+            '/markets/%s/sellingPoints/%d/menus',
+            $this->queryData[self::MARKET_CODE_IDENTIFIER],
+            $this->queryData[self::MARKET_SELLING_POINT]
         );
     }
 
@@ -33,14 +41,12 @@ class GetMarketSellingPoint extends Request
         $resolver->setRequired([self::MARKET_CODE_IDENTIFIER, self::MARKET_SELLING_POINT]);
     }
 
-    protected function handleResponse(string $content): SellingPoint
+    /**
+     * @return Menu[]
+     */
+    protected function handleResponse(string $content): array
     {
         return $this->getSerializer()
-            ->deserialize($content, SellingPoint::class, 'json');
-    }
-
-    public function request(): Error|SellingPoint
-    {
-        return $this->doRequest();
+            ->deserialize($content, Menu::class.'[]', 'json');
     }
 }

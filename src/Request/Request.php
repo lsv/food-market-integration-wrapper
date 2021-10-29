@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Authenticate;
+use Lsv\FoodMarketIntegration\Response\Error;
 use RuntimeException;
+use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
@@ -18,7 +20,6 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
 
 abstract class Request
 {
@@ -54,7 +55,7 @@ abstract class Request
 
     abstract protected function queryData(OptionsResolver $resolver): void;
 
-    abstract protected function handleResponse(ResponseInterface $response): mixed;
+    abstract protected function handleResponse(string $content): mixed;
 
     abstract public function request(): mixed;
 
@@ -64,12 +65,25 @@ abstract class Request
         $this->queryData($queryDataResolver);
         $queryData = $queryDataResolver->resolve($this->queryData);
 
-        return $this->handleResponse(
-            $this->getClient()->request(
+        try {
+            $response = $this->getClient()->request(
                 $this->getMethod(),
                 $this->requestUrl($queryData)
-            )
-        );
+            );
+            $content = $response->getContent(true);
+        } catch (ClientException $exception) {
+            if (400 === $exception->getCode()) {
+                return $this->getSerializer()->deserialize(
+                    $exception->getResponse()->getContent(false),
+                    Error::class,
+                    'json'
+                );
+            }
+
+            throw $exception;
+        }
+
+        return $this->handleResponse($content);
     }
 
     protected function getSerializer(): SerializerInterface

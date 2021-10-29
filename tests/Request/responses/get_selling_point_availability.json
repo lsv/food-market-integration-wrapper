@@ -1,0 +1,62 @@
+{
+    "deliveryServiceAvailability": {
+        "availabilityLabelShort": "35 min",
+        "availabilityLabel": "Delivery in 30 min",
+        "desiredDayHasService": true,
+        "distance": 2.34,
+        "enabled": true,
+        "isOutOfRange": false,
+        "executionTimeLabel": "From 09.30h to 23.30h",
+        "firstExecutionTime": "2017-02-10T09:30:00+0000",
+        "maxDiners": null,
+        "services": [
+            "service_1",
+            "service_2"
+        ]
+    },
+    "collectionServiceAvailability": {
+        "availabilityLabelShort": "20 min",
+        "availabilityLabel": "Take away in in 30 min",
+        "desiredDayHasService": true,
+        "distance": null,
+        "enabled": true,
+        "isOutOfRange": null,
+        "executionTimeLabel": "From 08.00h to 23.30h",
+        "firstExecutionTime": "2017-02-10T08:20:00+0000",
+        "maxDiners": null,
+        "services": [
+            "service_1",
+            "service_2"
+        ]
+    },
+    "insituServiceAvailability": {
+        "availabilityLabelShort": "20 min",
+        "availabilityLabel": "Book a table in in 30 min",
+        "desiredDayHasService": true,
+        "distance": null,
+        "enabled": true,
+        "isOutOfRange": null,
+        "executionTimeLabel": "From 08.00h to 22.30h",
+        "firstExecutionTime": "2017-02-10T08:20:00+0000",
+        "maxDiners": null,
+        "services": [
+            "service_1",
+            "service_2"
+        ]
+    },
+    "reservationServiceAvailability": {
+        "availabilityLabelShort": "20 min",
+        "availabilityLabel": "Book a table in in 30 min",
+        "desiredDayHasService": true,
+        "distance": null,
+        "enabled": true,
+        "isOutOfRange": null,
+        "executionTimeLabel": "From 08.00h to 22.30h",
+        "firstExecutionTime": "2017-02-10T09:20:00+0000",
+        "maxDiners": 20,
+        "services": [
+            "service_1",
+            "service_2"
+        ]
+    }
+}
