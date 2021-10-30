@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Response\SellingPointAvailability;
 
+use DateTimeInterface;
+
 abstract class AbstractSellingPointAvailability
 {
     public string $availabilityLabelShort;
@@ -13,7 +15,7 @@ abstract class AbstractSellingPointAvailability
     public bool $enabled;
     public ?bool $isOutOfRange;
     public string $executionTimeLabel;
-    public string $firstExecutionTime;
+    public DateTimeInterface $firstExecutionTime;
     public ?int $maxDiners;
 
     /**

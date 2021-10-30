@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Model;
 
-use Lsv\FoodMarketIntegration\Model\ReservationPostOrder\Consumer;
-use Lsv\FoodMarketIntegration\Model\ReservationPostOrder\SellingPoint;
+use DateTimeInterface;
+use Lsv\FoodMarketIntegration\Model\Order\Consumer;
+use Lsv\FoodMarketIntegration\Model\Order\SellingPoint;
 
-class ReservationPostOrder implements PostOrderInterface
+class ReservationOrder implements PostOrderInterface
 {
     public function __construct(
         public string $marketOrderId,
         public string $code,
-        public string $executionTime,
+        public DateTimeInterface $executionTime,
         public string $comment,
         public Consumer $consumer,
         public SellingPoint $sellingPoint,

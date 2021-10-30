@@ -19,6 +19,14 @@ class GetSellingPointClosingExceptions extends AbstractRequest
         $this->addQueryData(self::MARKET_SELLING_POINT, $sellingPointId);
     }
 
+    /**
+     * @return ResponseError|SellingPointException[]
+     */
+    public function request(): ResponseError|array
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrlPath(): string
     {
         return sprintf(
@@ -26,11 +34,6 @@ class GetSellingPointClosingExceptions extends AbstractRequest
             $this->getQueryData(self::MARKET_CODE_IDENTIFIER),
             $this->getQueryData(self::MARKET_SELLING_POINT)
         );
-    }
-
-    protected function getUrlQuery(): array
-    {
-        return [];
     }
 
     protected function resolveQueryData(OptionsResolver $resolver): void
@@ -44,13 +47,5 @@ class GetSellingPointClosingExceptions extends AbstractRequest
     protected function handleResponse(string $content): array
     {
         return $this->getSerializer()->deserialize($content, SellingPointException::class.'[]', 'json');
-    }
-
-    /**
-     * @return ResponseError|SellingPointException[]
-     */
-    public function request(): ResponseError|array
-    {
-        return $this->doRequest();
     }
 }

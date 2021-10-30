@@ -15,9 +15,12 @@ class GetSellingPointMenusAvailability extends GetSellingPointMenus
         $this->addQueryData(self::LOAD_PRODUCTS, $loadProducts);
     }
 
-    protected function getUrlQuery(): array
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getQueryPath(): array
     {
-        $data = parent::getUrlQuery();
+        $data = parent::getQueryPath();
         if (null !== ($loadProducts = $this->getQueryData(self::LOAD_PRODUCTS))) {
             $data['loadProducts'] = $loadProducts;
         }

@@ -30,9 +30,10 @@ class GetSellingPointClosingExceptionsTest extends AbstractRequestTest
         self::assertCount(1, $data);
         $this->responseObjectTest($data[0], [
             'id' => 872,
-            'startsAt' => '2017-10-14T22:00:00+0000',
-            'expiresAt' => '2017-10-15T21:59:00+0000',
         ]);
+
+        self::assertSame('2017-10-14', $data[0]->startsAt->format('Y-m-d'));
+        self::assertSame('2017-10-15', $data[0]->expiresAt->format('Y-m-d'));
     }
 
     protected function setUp(): void

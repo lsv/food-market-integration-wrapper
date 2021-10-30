@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Response;
 
+use DateTimeInterface;
 use Lsv\FoodMarketIntegration\Response\Order\Consumer;
 use Lsv\FoodMarketIntegration\Response\Order\Currency;
 use Lsv\FoodMarketIntegration\Response\Order\Delivery;
@@ -42,7 +43,7 @@ class Order
     public ?int $posOrderId;
     public string $marketOrderId;
     public string $marketOrderCode;
-    public string $executionTime;
+    public DateTimeInterface $executionTime;
     public float $deliveryAmount;
     public DeliveryAddress $deliveryAddress;
     /**

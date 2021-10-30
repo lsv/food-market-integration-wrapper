@@ -1,0 +1,138 @@
+{
+    "marketOrderId": "1406545518",
+    "code": "LBJ8ZUJR",
+    "productsAmount": 67.0,
+    "deliveryAmount": 1.0,
+    "tipsAmount": 0.0,
+    "discountsAmount": 0.0,
+    "totalAmount": 68.0,
+    "executionTime": "2020-07-23 14:07:04",
+    "comment": "Consumer order notes",
+    "currency": "EUR",
+    "consumer": {
+        "email": "consumer@example.com",
+        "name": "Fulanito",
+        "lastname": "Doe",
+        "phone": "+34600000000",
+        "billingName": null,
+        "billingAddress": null,
+        "billingVatNumber": null
+    },
+    "type": "delivery",
+    "sellingPoint": {
+        "sinqroId": 3961
+    },
+    "payments": [
+        {
+            "amount": 68.0,
+            "methodCode": "EXTERNAL_PAYMENT"
+        }
+    ],
+    "orderLines": [
+        {
+            "type": "PRODUCT",
+            "totalAmount": 36.0,
+            "unitAdditionalAmount": 1.0,
+            "unitAmount": 11.0,
+            "quantity": 3,
+            "label": "Pizza de la huerta",
+            "comment": null,
+            "childrenOrderLines": [
+                {
+                    "type": "PRODUCT_OPTION",
+                    "totalAmount": 1.0,
+                    "unitAdditionalAmount": 0.0,
+                    "unitFinalAmount": 1.0,
+                    "unitAmount": 1.0,
+                    "quantity": 1,
+                    "label": "Bacon",
+                    "comment": null,
+                    "childrenOrderLines": [],
+                    "baseAmount": 0.91,
+                    "vatAmount": 0.09,
+                    "vatValue": 10,
+                    "productOption": {
+                        "sinqroId": 234816
+                    }
+                }
+            ],
+            "baseAmount": 32.73,
+            "vatAmount": 3.27,
+            "vatValue": 10,
+            "product": {
+                "sinqroId": 109838
+            }
+        },
+        {
+            "type": "PRODUCT",
+            "totalAmount": 27.0,
+            "unitAdditionalAmount": 1.0,
+            "unitFinalAmount": 13.5,
+            "unitAmount": 12.5,
+            "quantity": 2,
+            "label": "Pizza Barbacoa",
+            "comment": null,
+            "childrenOrderLines": [
+                {
+                    "type": "PRODUCT_OPTION",
+                    "totalAmount": 1.0,
+                    "unitAdditionalAmount": 0.0,
+                    "unitFinalAmount": 1.0,
+                    "unitAmount": 1.0,
+                    "quantity": 1,
+                    "label": "Bacon",
+                    "comment": null,
+                    "childrenOrderLines": [],
+                    "baseAmount": 0.91,
+                    "vatAmount": 0.09,
+                    "vatValue": 10,
+                    "productOption": {
+                        "sinqroId": 234816
+                    }
+                }
+            ],
+            "baseAmount": 24.55,
+            "vatAmount": 2.45,
+            "vatValue": 10,
+            "product": {
+                "sinqroId": 109840
+            }
+        },
+        {
+            "type": "PRODUCT",
+            "totalAmount": 4.0,
+            "unitAdditionalAmount": 0.0,
+            "unitFinalAmount": 2.0,
+            "unitAmount": 2.0,
+            "quantity": 2,
+            "label": "Cerveza 33cl",
+            "comment": "Comment 1",
+            "childrenOrderLines": [],
+            "baseAmount": 3.64,
+            "vatAmount": 0.36,
+            "vatValue": 10,
+            "product": {
+                "sinqroId": 109842
+            }
+        },
+        {
+            "type": "DELIVERY",
+            "totalAmount": 1.0,
+            "unitAmount": 1.0,
+            "quantity": 1,
+            "label": "Delivery cost",
+            "comment": null,
+            "childrenOrderLines": [],
+            "baseAmount": 0.83,
+            "vatAmount": 0.17,
+            "vatValue": 21,
+            "distance": 0.0
+        }
+    ],
+    "delivery": {
+        "deliveryAddress": {
+            "completeAddress": "Carrer de la Tecnologia, 17, 08840, Viladecans",
+            "details": "Planta 0"
+        }
+    }
+}

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Response;
 
+use DateTimeInterface;
 use Lsv\FoodMarketIntegration\Response\Menu\Schedule;
 use Lsv\FoodMarketIntegration\Response\Menu\Section;
 
@@ -16,8 +17,8 @@ class Menu
     public string $type;
     public string $shortDescription;
     public int $position;
-    public string $availableFrom;
-    public ?string $availableTo;
+    public DateTimeInterface $availableFrom;
+    public ?DateTimeInterface $availableTo;
 
     /**
      * @var Section[]

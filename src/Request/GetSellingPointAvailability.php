@@ -26,6 +26,11 @@ class GetSellingPointAvailability extends AbstractRequest
         $this->addQueryData(self::DATE, $dateTime);
     }
 
+    public function request(): ResponseError|SellingPointAvailability
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrlPath(): string
     {
         return sprintf(
@@ -35,7 +40,10 @@ class GetSellingPointAvailability extends AbstractRequest
         );
     }
 
-    protected function getUrlQuery(): array
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getQueryPath(): array
     {
         $data = [];
         if ($date = $this->getQueryData(self::DATE)) {
@@ -56,10 +64,5 @@ class GetSellingPointAvailability extends AbstractRequest
     {
         return $this->getSerializer()
             ->deserialize($content, SellingPointAvailability::class, 'json');
-    }
-
-    public function request(): ResponseError|SellingPointAvailability
-    {
-        return $this->doRequest();
     }
 }

@@ -19,6 +19,11 @@ class GetMarketSellingPoint extends AbstractRequest
         $this->addQueryData(self::MARKET_SELLING_POINT, $sellingPointId);
     }
 
+    public function request(): ResponseError|SellingPoint
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrlPath(): string
     {
         return sprintf(
@@ -26,11 +31,6 @@ class GetMarketSellingPoint extends AbstractRequest
             $this->getQueryData(self::MARKET_CODE_IDENTIFIER),
             $this->getQueryData(self::MARKET_SELLING_POINT)
         );
-    }
-
-    protected function getUrlQuery(): array
-    {
-        return [];
     }
 
     protected function resolveQueryData(OptionsResolver $resolver): void
@@ -42,10 +42,5 @@ class GetMarketSellingPoint extends AbstractRequest
     {
         return $this->getSerializer()
             ->deserialize($content, SellingPoint::class, 'json');
-    }
-
-    public function request(): ResponseError|SellingPoint
-    {
-        return $this->doRequest();
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Request;
 
+use DateTimeInterface;
 use Lsv\FoodMarketIntegration\Response\Menu;
 use Lsv\FoodMarketIntegration\Response\ResponseError;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,7 +22,7 @@ class GetSellingPointMenus extends AbstractRequest
         $this->addQueryData(self::MARKET_SELLING_POINT, $sellingPointId);
     }
 
-    public function setDate(\DateTimeInterface $dateTime): void
+    public function setDate(DateTimeInterface $dateTime): void
     {
         $this->addQueryData(self::DATE, $dateTime);
     }
@@ -48,7 +49,10 @@ class GetSellingPointMenus extends AbstractRequest
         );
     }
 
-    protected function getUrlQuery(): array
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getQueryPath(): array
     {
         $data = [];
 

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Response\Order;
 
+use DateTimeInterface;
+
 class Delivery
 {
     public int $id;
@@ -12,11 +14,11 @@ class Delivery
     public ?string $deliveryAccountName;
     public ?string $deliveryAccountPhone;
     public PickupAddress $pickupAddress;
-    public string $pickupAgreedAt;
-    public string $pickupConfirmedAt;
+    public ?DateTimeInterface $pickupAgreedAt;
+    public ?DateTimeInterface $pickupConfirmedAt;
     public DeliveryAddress $deliveryAddress;
-    public string $deliveryAgreedAt;
-    public string $deliveryConfirmedAt;
+    public ?DateTimeInterface $deliveryAgreedAt;
+    public ?DateTimeInterface $deliveryConfirmedAt;
     public ?string $deliveryInstructions;
     public ?string $forSenderInstructions;
     public float $linearDistance;

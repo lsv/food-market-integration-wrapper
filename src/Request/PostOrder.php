@@ -20,17 +20,22 @@ class PostOrder extends AbstractRequest
         $this->addPostData(self::ORDER, $order);
     }
 
+    public function getMethod(): string
+    {
+        return 'POST';
+    }
+
+    public function request(): ResponseError|Order
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrlPath(): string
     {
         return sprintf(
             '/markets/%s/orders',
             $this->getQueryData(self::MARKET_CODE_IDENTIFIER)
         );
-    }
-
-    protected function getUrlQuery(): array
-    {
-        return [];
     }
 
     protected function resolveQueryData(OptionsResolver $resolver): void
@@ -51,18 +56,8 @@ class PostOrder extends AbstractRequest
         return json_decode($serialized, true, 512, JSON_THROW_ON_ERROR);
     }
 
-    public function getMethod(): string
-    {
-        return 'POST';
-    }
-
     protected function handleResponse(string $content): Order
     {
         return $this->getSerializer()->deserialize($content, Order::class, 'json');
-    }
-
-    public function request(): ResponseError|Order
-    {
-        return $this->doRequest();
     }
 }

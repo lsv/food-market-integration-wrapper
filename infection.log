@@ -1,22 +1,37 @@
 Escaped mutants:
 ================
 
-1) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:75    [M] ProtectedVisibility
+1) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:82    [M] ProtectedVisibility
 
 --- Original
 +++ New
 @@ @@
-      */
-     protected abstract function getUrlQuery() : array;
+     protected abstract function getUrlPath() : string;
+     protected abstract function handleResponse(string $content) : mixed;
      protected abstract function resolveQueryData(OptionsResolver $resolver) : void;
 -    protected function resolvePostData(OptionsResolver $resolver) : void
 +    private function resolvePostData(OptionsResolver $resolver) : void
      {
      }
-     protected abstract function handleResponse(string $content) : mixed;
+     /**
 
 
-2) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:86    [M] ProtectedVisibility
+2) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:89    [M] ProtectedVisibility
+
+--- Original
++++ New
+@@ @@
+     /**
+      * @return array<string, mixed>|null
+      */
+-    protected function getQueryPath() : ?array
++    private function getQueryPath() : ?array
+     {
+         return null;
+     }
+
+
+3) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:97    [M] ProtectedVisibility
 
 --- Original
 +++ New
@@ -31,7 +46,7 @@ Escaped mutants:
      }
 
 
-3) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:108    [M] Coalesce
+4) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:119    [M] Coalesce
 
 --- Original
 +++ New
@@ -46,7 +61,7 @@ Escaped mutants:
      {
 
 
-4) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:153    [M] ArrayItemRemoval
+5) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:164    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -61,7 +76,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-5) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:155    [M] ArrayItemRemoval
+6) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:166    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -76,7 +91,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-6) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:156    [M] ArrayItemRemoval
+7) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:167    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -91,7 +106,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-7) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:157    [M] ArrayItemRemoval
+8) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:168    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -106,7 +121,7 @@ Escaped mutants:
          return new Serializer($normalizers, $encoders);
 
 
-8) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:30    [M] MethodCallRemoval
+9) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:38    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -121,7 +136,7 @@ Escaped mutants:
      }
 
 
-9) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:33    [M] MethodCallRemoval
+10) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:41    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -136,7 +151,7 @@ Escaped mutants:
      {
 
 
-10) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:59    [M] ArrayOneItem
+11) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetMarketSellingPoints.php:70    [M] ArrayOneItem
 
 --- Original
 +++ New
@@ -151,7 +166,7 @@ Escaped mutants:
       * @return array<SellingPoint>
 
 
-11) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetSellingPointAvailability.php:46    [M] ArrayOneItem
+12) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetSellingPointAvailability.php:54    [M] ArrayOneItem
 
 --- Original
 +++ New
@@ -166,7 +181,7 @@ Escaped mutants:
      {
 
 
-12) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetSellingPointMenusAvailability.php:13    [M] TrueValue
+13) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetSellingPointMenusAvailability.php:13    [M] TrueValue
 
 --- Original
 +++ New
@@ -181,7 +196,7 @@ Escaped mutants:
      }
 
 
-13) /home/lsv/Projects/food-market-integration-wrapper/src/Request/GetSellingPointMenusAvailability.php:25    [M] ArrayOneItem
+14) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/GetSellingPointMenusAvailability.php:28    [M] ArrayOneItem
 
 --- Original
 +++ New
@@ -196,7 +211,7 @@ Escaped mutants:
      {
 
 
-14) /home/lsv/Projects/food-market-integration-wrapper/src/Request/PostOrder.php:44    [M] MethodCallRemoval
+15) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/PostOrder.php:49    [M] MethodCallRemoval
 
 --- Original
 +++ New
@@ -211,7 +226,7 @@ Escaped mutants:
      {
 
 
-15) /home/lsv/Projects/food-market-integration-wrapper/src/Request/PostOrder.php:51    [M] DecrementInteger
+16) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/PostOrder.php:56    [M] DecrementInteger
 
 --- Original
 +++ New
@@ -222,11 +237,11 @@ Escaped mutants:
 -        return json_decode($serialized, true, 512, JSON_THROW_ON_ERROR);
 +        return json_decode($serialized, true, 511, JSON_THROW_ON_ERROR);
      }
-     public function getMethod() : string
+     protected function handleResponse(string $content) : Order
      {
 
 
-16) /home/lsv/Projects/food-market-integration-wrapper/src/Request/PostOrder.php:51    [M] IncrementInteger
+17) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/PostOrder.php:56    [M] IncrementInteger
 
 --- Original
 +++ New
@@ -237,7 +252,7 @@ Escaped mutants:
 -        return json_decode($serialized, true, 512, JSON_THROW_ON_ERROR);
 +        return json_decode($serialized, true, 513, JSON_THROW_ON_ERROR);
      }
-     public function getMethod() : string
+     protected function handleResponse(string $content) : Order
      {
 
 
@@ -250,7 +265,7 @@ Skipped mutants:
 Not Covered mutants:
 ====================
 
-1) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:198    [M] Identical
+1) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:199    [M] Identical
 
 --- Original
 +++ New
@@ -265,7 +280,7 @@ Not Covered mutants:
          if (null === self::$client) {
 
 
-2) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:199    [M] Throw_
+2) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:200    [M] Throw_
 
 --- Original
 +++ New
@@ -280,7 +295,7 @@ Not Covered mutants:
              self::$client = HttpClient::create(['base_uri' => self::$baseUri, 'headers' => ['x-api-server-access-token' => self::$authentication->getServerAccessToken(), 'x-api-user-access-token' => self::$authentication->getUserAccessToken()]]);
 
 
-3) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:202    [M] Identical
+3) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:203    [M] Identical
 
 --- Original
 +++ New
@@ -297,7 +312,7 @@ Not Covered mutants:
  }
 
 
-4) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:203    [M] ArrayItemRemoval
+4) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:204    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -313,7 +328,7 @@ Not Covered mutants:
  }
 
 
-5) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:205    [M] ArrayItemRemoval
+5) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:206    [M] ArrayItemRemoval
 
 --- Original
 +++ New
@@ -329,7 +344,7 @@ Not Covered mutants:
  }
 
 
-6) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:206    [M] ArrayItem
+6) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:207    [M] ArrayItem
 
 --- Original
 +++ New
@@ -345,7 +360,7 @@ Not Covered mutants:
  }
 
 
-7) /home/lsv/Projects/food-market-integration-wrapper/src/Request/AbstractRequest.php:207    [M] ArrayItem
+7) /home/lsv/projects/peasy/food-market-integration-wrapper/src/Request/AbstractRequest.php:208    [M] ArrayItem
 
 --- Original
 +++ New

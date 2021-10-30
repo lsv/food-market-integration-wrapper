@@ -63,12 +63,19 @@ abstract class AbstractRequest implements Request
         return 'GET';
     }
 
+    public function getRequestUrl(): string
+    {
+        return $this->requestUrl;
+    }
+
+    public function getRequestPostData(): ?array
+    {
+        return $this->getFormData();
+    }
+
     abstract protected function getUrlPath(): string;
 
-    /**
-     * @return array<string, mixed>
-     */
-    abstract protected function getUrlQuery(): array;
+    abstract protected function handleResponse(string $content): mixed;
 
     abstract protected function resolveQueryData(OptionsResolver $resolver): void;
 
@@ -76,9 +83,13 @@ abstract class AbstractRequest implements Request
     {
     }
 
-    abstract protected function handleResponse(string $content): mixed;
-
-    abstract public function request(): mixed;
+    /**
+     * @return array<string, mixed>|null
+     */
+    protected function getQueryPath(): ?array
+    {
+        return null;
+    }
 
     /**
      * @return array<string, mixed>|null
@@ -170,20 +181,10 @@ abstract class AbstractRequest implements Request
         return new Serializer($normalizers, $encoders);
     }
 
-    public function getRequestUrl(): string
-    {
-        return $this->requestUrl;
-    }
-
-    public function getRequestPostData(): ?array
-    {
-        return $this->getFormData();
-    }
-
     private function requestUrl(): string
     {
         $url = $this->getUrlPath();
-        if ($query = $this->getUrlQuery()) {
+        if ($query = $this->getQueryPath()) {
             $url .= '?'.http_build_query($query);
         }
 

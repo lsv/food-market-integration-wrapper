@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
+use DateTime;
 use Lsv\FoodMarketIntegration\Request\GetSellingPointAvailability;
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\CollectionServiceAvailability;
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\DeliveryServiceAvailability;
@@ -30,9 +31,9 @@ class GetSellingPointAvailabilityTest extends AbstractRequestTest
         ];
         self::setRequest($responses);
 
-        $date = new \DateTime('2021-12-15');
+        $date = new DateTime('2021-12-15');
         $this->testObject->setDate($date);
-        $data = $this->testObject->request();
+        $this->testObject->request();
         self::assertSame(
             '/markets/123/sellingPoints/321/availability?date=2021-12-15',
             $this->testObject->getRequestUrl()
@@ -60,7 +61,7 @@ class GetSellingPointAvailabilityTest extends AbstractRequestTest
         self::assertTrue($data->deliveryServiceAvailability->enabled);
         self::assertFalse($data->deliveryServiceAvailability->isOutOfRange);
         self::assertSame('From 09.30h to 23.30h', $data->deliveryServiceAvailability->executionTimeLabel);
-        self::assertSame('2017-02-10T09:30:00+0000', $data->deliveryServiceAvailability->firstExecutionTime);
+        self::assertSame('2017-02-10', $data->deliveryServiceAvailability->firstExecutionTime->format('Y-m-d'));
         self::assertNull($data->deliveryServiceAvailability->maxDiners);
         self::assertCount(2, $data->deliveryServiceAvailability->services);
         $services = $data->deliveryServiceAvailability->services;

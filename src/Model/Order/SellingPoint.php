@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lsv\FoodMarketIntegration\Model\ReservationPostOrder;
+namespace Lsv\FoodMarketIntegration\Model\Order;
 
 class SellingPoint
 {

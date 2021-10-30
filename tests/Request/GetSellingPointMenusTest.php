@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
+use DateTime;
 use Lsv\FoodMarketIntegration\Request\GetSellingPointMenus;
 use Lsv\FoodMarketIntegration\Response\Menu\Product;
 use Symfony\Component\HttpClient\Response\MockResponse;
@@ -27,7 +28,7 @@ class GetSellingPointMenusTest extends AbstractRequestTest
         ];
         self::setRequest($responses);
 
-        $date = new \DateTime('2021-12-15');
+        $date = new DateTime('2021-12-15');
         $this->testObject->setDate($date);
         $this->testObject->setOrderType('order');
         $this->testObject->request();
@@ -53,6 +54,8 @@ class GetSellingPointMenusTest extends AbstractRequestTest
         self::assertCount(1, $data);
         $menu = $data[0];
         self::assertSame(10674, $menu->id);
+        self::assertSame('2020-07-23', $menu->availableFrom->format('Y-m-d'));
+        self::assertNull($menu->availableTo);
         self::assertSame('Nuestra carta de pizzas', $menu->shortDescription);
         self::assertCount(3, $menu->menuSections);
         self::assertSame(8398, $menu->menuSections[0]->id);

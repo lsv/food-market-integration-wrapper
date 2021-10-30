@@ -21,6 +21,16 @@ class CancelOrder extends AbstractRequest
         $this->addPostData(self::COMMENT, $comment);
     }
 
+    public function getMethod(): string
+    {
+        return 'POST';
+    }
+
+    public function request(): ResponseError|Order
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrlPath(): string
     {
         return sprintf(
@@ -28,16 +38,6 @@ class CancelOrder extends AbstractRequest
             $this->getQueryData(self::MARKET_CODE_IDENTIFIER),
             $this->getQueryData(self::MARKET_ORDER_IDENTIFIER)
         );
-    }
-
-    public function getMethod(): string
-    {
-        return 'POST';
-    }
-
-    protected function getUrlQuery(): array
-    {
-        return [];
     }
 
     protected function resolveQueryData(OptionsResolver $resolver): void
@@ -60,10 +60,5 @@ class CancelOrder extends AbstractRequest
     protected function handleResponse(string $content): Order
     {
         return $this->getSerializer()->deserialize($content, Order::class, 'json');
-    }
-
-    public function request(): ResponseError|Order
-    {
-        return $this->doRequest();
     }
 }

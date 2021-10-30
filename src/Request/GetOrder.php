@@ -19,6 +19,11 @@ class GetOrder extends AbstractRequest
         $this->addQueryData(self::MARKET_ORDER_IDENTIFIER, $marketOrderIdentifier);
     }
 
+    public function request(): ResponseError|Order
+    {
+        return $this->doRequest();
+    }
+
     protected function getUrlPath(): string
     {
         return sprintf(
@@ -26,11 +31,6 @@ class GetOrder extends AbstractRequest
             $this->getQueryData(self::MARKET_CODE_IDENTIFIER),
             $this->getQueryData(self::MARKET_ORDER_IDENTIFIER)
         );
-    }
-
-    protected function getUrlQuery(): array
-    {
-        return [];
     }
 
     protected function resolveQueryData(OptionsResolver $resolver): void
@@ -41,10 +41,5 @@ class GetOrder extends AbstractRequest
     protected function handleResponse(string $content): Order
     {
         return $this->getSerializer()->deserialize($content, Order::class, 'json');
-    }
-
-    public function request(): ResponseError|Order
-    {
-        return $this->doRequest();
     }
 }

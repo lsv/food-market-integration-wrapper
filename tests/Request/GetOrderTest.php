@@ -47,9 +47,10 @@ class GetOrderTest extends AbstractRequestTest
             'posOrderId' => null,
             'marketOrderId' => '73626',
             'marketOrderCode' => 'RNYLUD',
-            'executionTime' => '2020-07-23T07:06:52+0000',
             'deliveryAmount' => 1.0,
         ]);
+        self::assertSame('2020-23-07', $data->executionTime->format('Y-d-m'));
+
         $consumer = $data->consumer;
         self::assertInstanceOf(Order\Consumer::class, $consumer);
         $this->responseObjectTest($consumer, [
@@ -125,10 +126,6 @@ class GetOrderTest extends AbstractRequestTest
             'driver' => null,
             'deliveryAccountName' => null,
             'deliveryAccountPhone' => null,
-            'pickupAgreedAt' => '2020-07-23T06:56:52+0000',
-            'pickupConfirmedAt' => '2020-07-23T06:56:52+0000',
-            'deliveryAgreedAt' => '2020-07-23T07:06:52+0000',
-            'deliveryConfirmedAt' => '2020-07-23T07:06:52+0000',
             'deliveryInstructions' => null,
             'forSenderInstructions' => null,
             'linearDistance' => 0.0,
@@ -140,6 +137,11 @@ class GetOrderTest extends AbstractRequestTest
             'destinationContactPhone' => '600000000',
             'trackingUrl' => 'https://tracking.sinqro.com/es-es/delivery?t=3b89b290f687eb6abc134d588be7be1a',
         ]);
+        self::assertSame('23-07-2020', $delivery->pickupAgreedAt->format('d-m-Y'));
+        self::assertSame('23-07-2020', $delivery->pickupConfirmedAt->format('d-m-Y'));
+        self::assertSame('23-07-2020', $delivery->deliveryAgreedAt->format('d-m-Y'));
+        self::assertSame('23-07-2020', $delivery->deliveryConfirmedAt->format('d-m-Y'));
+
         $status = $delivery->status;
         self::assertInstanceOf(Order\DeliveryStatus::class, $status);
         $this->responseObjectTest($status, [
