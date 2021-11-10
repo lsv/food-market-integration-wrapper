@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegration\Model;
 
+use Lsv\FoodMarketIntegration\Model\RequestTags\Tag;
+
 class RequestTags
 {
     /**
-     * @var array[]
+     * @var Tag[]
      */
     private array $tags = [];
 
     public function addTag(string $code, string $value): void
     {
-        $this->tags[] = ['code' => $code, 'value' => $value];
+        $this->tags[] = new Tag($code, $value);
     }
 
     /**
-     * @return array[]
+     * @return Tag[]
      */
     public function getTags(): array
     {

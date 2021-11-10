@@ -61,8 +61,8 @@ class GetMarketSellingPoints extends AbstractRequest
         if (null !== $requestTags) {
             foreach ($requestTags->getTags() as $tag) {
                 $data['tags'][] = [
-                    'code' => $tag['code'],
-                    'value' => $tag['value'],
+                    'code' => $tag->code,
+                    'value' => $tag->value,
                 ];
             }
         }
