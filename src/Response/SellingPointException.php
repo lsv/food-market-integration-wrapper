@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lsv\FoodMarketIntegrationTest\Request;
+namespace Lsv\FoodMarketIntegration\Response;
 
 use DateTimeInterface;
 

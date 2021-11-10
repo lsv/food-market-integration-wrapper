@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Response\ResponseError;
-use Lsv\FoodMarketIntegrationTest\Request\SellingPointException;
+use Lsv\FoodMarketIntegration\Response\SellingPointException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GetSellingPointClosingExceptions extends AbstractRequest
