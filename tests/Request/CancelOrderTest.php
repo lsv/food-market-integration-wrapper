@@ -6,7 +6,7 @@ namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Request\CancelOrder;
 use Lsv\FoodMarketIntegration\Response\Order;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class CancelOrderTest extends AbstractRequestTest
 {
@@ -19,7 +19,7 @@ class CancelOrderTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_order.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_order.json')),
         ];
         self::setRequest($responses);
 

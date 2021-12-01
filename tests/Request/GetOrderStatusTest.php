@@ -6,7 +6,7 @@ namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Request\GetOrderStatus;
 use Lsv\FoodMarketIntegration\Response\OrderStatus;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetOrderStatusTest extends AbstractRequestTest
 {
@@ -23,7 +23,7 @@ class GetOrderStatusTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_order_status.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_order_status.json')),
         ];
         self::setRequest($responses);
 

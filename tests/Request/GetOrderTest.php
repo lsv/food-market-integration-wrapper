@@ -8,7 +8,7 @@ use Generator;
 use Lsv\FoodMarketIntegration\Request\GetOrder;
 use Lsv\FoodMarketIntegration\Response\Order;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetOrderTest extends AbstractRequestTest
 {
@@ -20,7 +20,7 @@ class GetOrderTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_order.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_order.json')),
         ];
         self::setRequest($responses);
 
@@ -198,7 +198,7 @@ class GetOrderTest extends AbstractRequestTest
     public function testCanGetDifferentOrderTypes(string $file): void
     {
         $responses = [
-            new MockResponse($file),
+            new ResponseObject($file),
         ];
         self::setRequest($responses);
 

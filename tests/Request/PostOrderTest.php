@@ -17,7 +17,7 @@ use Lsv\FoodMarketIntegration\Model\Order\Product;
 use Lsv\FoodMarketIntegration\Model\Order\SellingPoint;
 use Lsv\FoodMarketIntegration\Model\ReservationOrder;
 use Lsv\FoodMarketIntegration\Request\PostOrder;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class PostOrderTest extends AbstractRequestTest
 {
@@ -91,7 +91,7 @@ class PostOrderTest extends AbstractRequestTest
         );
 
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_order.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_order.json')),
         ];
         self::setRequest($responses);
 
@@ -128,7 +128,7 @@ class PostOrderTest extends AbstractRequestTest
         );
 
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_order.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_order.json')),
         ];
         self::setRequest($responses);
 

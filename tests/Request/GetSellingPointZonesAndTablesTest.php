@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Request\GetSellingPointZonesAndTables;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetSellingPointZonesAndTablesTest extends AbstractRequestTest
 {
@@ -22,7 +22,7 @@ class GetSellingPointZonesAndTablesTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_zones_and_tables.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_zones_and_tables.json')),
         ];
         self::setRequest($responses);
 

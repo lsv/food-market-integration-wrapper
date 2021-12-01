@@ -11,8 +11,8 @@ use Lsv\FoodMarketIntegration\Response\ResponseError;
 use Lsv\FoodMarketIntegration\Response\SellingPoint;
 use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointAddress;
 use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointTags;
-use Symfony\Component\HttpClient\Exception\ClientException;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
+use Psr\Http\Client\ClientExceptionInterface;
 
 class GetMarketSellingPointsTest extends AbstractRequestTest
 {
@@ -28,7 +28,7 @@ class GetMarketSellingPointsTest extends AbstractRequestTest
     public function testThrowsKnownException(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/throws_error.json'), [
+            new ResponseObject(file_get_contents(__DIR__.'/responses/throws_error.json'), [
                 'http_code' => 400,
             ]),
         ];
@@ -46,9 +46,9 @@ class GetMarketSellingPointsTest extends AbstractRequestTest
 
     public function testThrowsException(): void
     {
-        $this->expectException(ClientException::class);
+        $this->expectException(ClientExceptionInterface::class);
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/throws_error.json'), [
+            new ResponseObject(file_get_contents(__DIR__.'/responses/throws_error.json'), [
                 'http_code' => 404,
             ]),
         ];
@@ -59,7 +59,7 @@ class GetMarketSellingPointsTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_market_selling_points.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_market_selling_points.json')),
         ];
         self::setRequest($responses);
 

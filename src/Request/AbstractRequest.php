@@ -6,9 +6,10 @@ namespace Lsv\FoodMarketIntegration\Request;
 
 use Lsv\FoodMarketIntegration\Authenticate;
 use Lsv\FoodMarketIntegration\Response\ResponseError;
+use Nyholm\Psr7\ServerRequest;
+use Psr\Http\Client\ClientInterface;
 use RuntimeException;
-use Symfony\Component\HttpClient\Exception\ClientException;
-use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\Psr18Client;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
@@ -19,12 +20,11 @@ use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 abstract class AbstractRequest implements Request
 {
     private static ?Authenticate $authentication = null;
-    private static ?HttpClientInterface $client = null;
+    private static ?ClientInterface $client = null;
     private static string $baseUri = 'https://api.sinqro.com/market-platform/v1';
     private string $requestUrl = '';
 
@@ -53,7 +53,7 @@ abstract class AbstractRequest implements Request
         self::$authentication = $authenticate;
     }
 
-    public static function setHttpClient(HttpClientInterface $client): void
+    public static function setHttpClient(ClientInterface $client): void
     {
         self::$client = $client;
     }
@@ -128,29 +128,24 @@ abstract class AbstractRequest implements Request
         $postDataResolver = new OptionsResolver();
         $this->resolvePostData($postDataResolver);
         $this->resolvedPostData = $postDataResolver->resolve($this->postData);
-        $options = [];
-        if ($this->getFormData()) {
-            $options['body'] = $this->getFormData();
-        }
 
-        try {
-            $response = $this->getClient()->request(
-                $this->getMethod(),
-                $this->requestUrl(),
-                $options
+        $request = new ServerRequest(
+            $this->getMethod(),
+            $this->url(),
+            $this->getHeaders(),
+            $this->getFormData() ? json_encode($this->getFormData(), JSON_THROW_ON_ERROR) : null
+        );
+
+        $response = $this->getClient()->sendRequest($request);
+        if (in_array($response->getStatusCode(), [400, 404])) {
+            return $this->getSerializer()->deserialize(
+                $response->getBody(),
+                ResponseError::class,
+                'json'
             );
-            $content = $response->getContent(true);
-        } catch (ClientException $exception) {
-            if (400 === $exception->getCode()) {
-                return $this->getSerializer()->deserialize(
-                    $exception->getResponse()->getContent(false),
-                    ResponseError::class,
-                    'json'
-                );
-            }
-
-            throw $exception;
         }
+
+        $content = (string) $response->getBody();
 
         return $this->handleResponse($content);
     }
@@ -194,22 +189,33 @@ abstract class AbstractRequest implements Request
     /**
      * @codeCoverageIgnore
      */
-    private function getClient(): HttpClientInterface
+    private function getClient(): ClientInterface
     {
         if (null === self::$authentication) {
             throw new RuntimeException('You need to authenticate before running');
         }
 
         if (null === self::$client) {
-            self::$client = HttpClient::create([
-                'base_uri' => self::$baseUri,
-                'headers' => [
-                    'x-api-server-access-token' => self::$authentication->getServerAccessToken(),
-                    'x-api-user-access-token' => self::$authentication->getUserAccessToken(),
-                ],
-            ]);
+            self::$client = new Psr18Client();
         }
 
         return self::$client;
+    }
+
+    /**
+     * @return array<string, string|null>
+     * @noinspection PhpDocSignatureInspection
+     */
+    private function getHeaders(): array
+    {
+        return [
+            'x-api-server-access-token' => self::$authentication?->getServerAccessToken(),
+            'x-api-user-access-token' => self::$authentication?->getUserAccessToken(),
+        ];
+    }
+
+    private function url(): string
+    {
+        return sprintf('%s%s', self::$baseUri, $this->requestUrl());
     }
 }
