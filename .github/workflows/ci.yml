@@ -21,7 +21,7 @@ jobs:
         strategy:
             matrix:
                 php-versions: [ '8.0', '8.1' ]
-                composer-lowest: ['', '--prefer-lowest']
+                composer-prefer: ['--prefer-dist', '--prefer-lowest']
 
         runs-on: ubuntu-latest
 
@@ -37,7 +37,7 @@ jobs:
                   tools: phpcpd, php-cs-fixer, phpstan, infection, rregeer/phpunit-coverage-check
 
             - name: Install Composer dependencies
-              run: composer install --no-progress --prefer-dist --optimize-autoloader && composer update ${{ matrix.composer-versions }}
+              run: composer install --no-progress --prefer-dist --optimize-autoloader && composer update ${{ matrix.composer-prefer }}
 
             - name: Run phpcpd
               run: phpcpd src tests
