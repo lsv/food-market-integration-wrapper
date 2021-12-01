@@ -9,7 +9,6 @@ use Lsv\FoodMarketIntegration\Response\ResponseError;
 use Nyholm\Psr7\ServerRequest;
 use Psr\Http\Client\ClientInterface;
 use RuntimeException;
-use Symfony\Component\HttpClient\Psr18Client;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
@@ -188,6 +187,7 @@ abstract class AbstractRequest implements Request
 
     /**
      * @codeCoverageIgnore
+     * @phpstan-return ClientInterface|\Symfony\Component\HttpClient\Psr18Client
      */
     private function getClient(): ClientInterface
     {
@@ -196,7 +196,11 @@ abstract class AbstractRequest implements Request
         }
 
         if (null === self::$client) {
-            self::$client = new Psr18Client();
+            if (!class_exists('\Symfony\Component\HttpClient\Psr18Client')) {
+                throw new RuntimeException('You must install a PSR 18 http client - try with composer install symfony/http-client');
+            }
+
+            self::$client = new \Symfony\Component\HttpClient\Psr18Client();
         }
 
         return self::$client;

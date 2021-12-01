@@ -7,8 +7,12 @@ PHP wrapper for [sinqro food market integration](https://developer.sinqro.com/en
 
 Install with composer, requires PHP >8.0
 
-```
+```bash
 composer require lsv/food-market-integration-wrapper
+
+# Add a PSR 18 client, fx
+composer require symfony/http-client
+# If you add another PSR18 client, then look below on how to use other PSR 18 clients
 ```
 
 Authenticate usage
