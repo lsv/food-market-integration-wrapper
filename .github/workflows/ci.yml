@@ -1,6 +1,10 @@
 name: ci
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - 'master'
 
 jobs:
     markdown-link-check:
@@ -16,7 +20,8 @@ jobs:
     ci:
         strategy:
             matrix:
-                php-versions: [ '8.0' ]
+                php-versions: [ '8.0', '8.1' ]
+                composer-prefer: ['--prefer-dist', '--prefer-lowest']
 
         runs-on: ubuntu-latest
 
@@ -32,7 +37,7 @@ jobs:
                   tools: phpcpd, php-cs-fixer, phpstan, infection, rregeer/phpunit-coverage-check
 
             - name: Install Composer dependencies
-              run: composer install --no-progress --prefer-dist --optimize-autoloader
+              run: composer install --no-progress --prefer-dist --optimize-autoloader && composer update ${{ matrix.composer-prefer }}
 
             - name: Run phpcpd
               run: phpcpd src tests
@@ -46,10 +51,10 @@ jobs:
               run: phpstan
 
             - name: Run tests
-              run: vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml
+              run: vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml --log-junit=.build/coverage/junit.xml --coverage-xml=.build/coverage/coverage-xml
 
             - name: Coverage check
               run: coverage-check clover.xml 100
 
             - name: Run infection
-              run: infection -j8
+              run: infection -j8 --skip-initial-tests --coverage=.build/coverage --configuration=infection.json
