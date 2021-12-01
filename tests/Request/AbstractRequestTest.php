@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
+use Http\Mock\Client;
 use Lsv\FoodMarketIntegration\Authenticate;
 use Lsv\FoodMarketIntegration\Request\AbstractRequest;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpClient\MockHttpClient;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractRequestTest extends TestCase
 {
@@ -16,9 +18,22 @@ abstract class AbstractRequestTest extends TestCase
         return new Authenticate('user', 'server');
     }
 
+    /**
+     * @param array<ResponseInterface> $mockResponses
+     */
     protected static function setRequest(array $mockResponses): void
     {
-        $client = new MockHttpClient($mockResponses, 'http://url.com');
+        $client = new Client();
+        foreach ($mockResponses as $response) {
+            if (404 === $response->getStatusCode()) {
+                $exception = new class() extends \Exception implements ClientExceptionInterface {
+                };
+                $client->addException($exception);
+            }
+
+            $client->addResponse($response);
+        }
+
         AbstractRequest::setAuthentication(self::getAuthenticate());
         AbstractRequest::setHttpClient($client);
     }

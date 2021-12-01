@@ -7,8 +7,12 @@ PHP wrapper for [sinqro food market integration](https://developer.sinqro.com/en
 
 Install with composer, requires PHP >8.0
 
-```
+```bash
 composer require lsv/food-market-integration-wrapper
+
+# Add a PSR 18 client, fx
+composer require symfony/http-client
+# If you add another PSR18 client, then look below on how to use other PSR 18 clients
 ```
 
 Authenticate usage
@@ -21,6 +25,7 @@ $userAccessToken = 'your user access token';
 $serverAccessToken = 'your server access token';
 $authenticate = new Authenticate($userAccessToken, $serverAccessToken);
 Request\AbstractRequest::setAuthentication($authenticate);
+// Your requests
 ```
 
 And basic usage, to fetch an order
@@ -64,6 +69,20 @@ For more usages, see below.
 | [GetSellingPointMenus](docs/request/GetSellingPointMenus.md) | Get menus | array of [Menu](docs/response/Menu.md) |
 | [GetSellingPointMenusAvailability](docs/request/GetSellingPointMenusAvailability.md) | Get menus with availability | array of [Menu](docs/response/Menu.md) |
 | [GetSellingPointZonesAndTables](docs/request/GetSellingPointZonesAndTables.md) | Get all the restaurant zones and tables | [ServiceZone](docs/response/ServiceZone.md) |
+
+## Use another PSR18 HTTP Client
+
+If you dont want to use symfony/http-client implementation, you can easily change it to another one.
+
+You can use a http client from [this list](https://packagist.org/providers/psr/http-client-implementation) - These are all PSR18 http client implementations.
+
+```php
+use Lsv\FoodMarketIntegration\Request;
+
+$client = $YourPSR18Client;
+Request\AbstractRequest::setHttpClient($client);
+// Your requests
+```
 
 ## TODO
 

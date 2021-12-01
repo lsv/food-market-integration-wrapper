@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Request\GetSellingPointClosingExceptions;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetSellingPointClosingExceptionsTest extends AbstractRequestTest
 {
@@ -17,7 +17,7 @@ class GetSellingPointClosingExceptionsTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_closing_exceptions.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_closing_exceptions.json')),
         ];
         self::setRequest($responses);
 

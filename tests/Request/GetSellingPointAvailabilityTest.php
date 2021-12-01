@@ -10,7 +10,7 @@ use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\CollectionServic
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\DeliveryServiceAvailability;
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\InsituServiceAvailability;
 use Lsv\FoodMarketIntegration\Response\SellingPointAvailability\ReservationServiceAvailability;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetSellingPointAvailabilityTest extends AbstractRequestTest
 {
@@ -27,7 +27,7 @@ class GetSellingPointAvailabilityTest extends AbstractRequestTest
     public function testCanSetDate(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_availability.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_availability.json')),
         ];
         self::setRequest($responses);
 
@@ -43,7 +43,7 @@ class GetSellingPointAvailabilityTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_availability.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_availability.json')),
         ];
         self::setRequest($responses);
 

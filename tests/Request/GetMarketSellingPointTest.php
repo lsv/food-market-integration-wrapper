@@ -6,7 +6,7 @@ namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Request\GetMarketSellingPoint;
 use Lsv\FoodMarketIntegration\Response\SellingPoint\SellingPointAddress;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetMarketSellingPointTest extends AbstractRequestTest
 {
@@ -23,7 +23,7 @@ class GetMarketSellingPointTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_market_selling_point.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_market_selling_point.json')),
         ];
         self::setRequest($responses);
 

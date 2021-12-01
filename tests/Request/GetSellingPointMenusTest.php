@@ -7,7 +7,7 @@ namespace Lsv\FoodMarketIntegrationTest\Request;
 use DateTime;
 use Lsv\FoodMarketIntegration\Request\GetSellingPointMenus;
 use Lsv\FoodMarketIntegration\Response\Menu\Product;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetSellingPointMenusTest extends AbstractRequestTest
 {
@@ -24,7 +24,7 @@ class GetSellingPointMenusTest extends AbstractRequestTest
     public function testCanSetOptionals(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
         ];
         self::setRequest($responses);
 
@@ -41,7 +41,7 @@ class GetSellingPointMenusTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
         ];
         self::setRequest($responses);
 

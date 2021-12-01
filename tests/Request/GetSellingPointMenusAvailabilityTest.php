@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Lsv\FoodMarketIntegrationTest\Request;
 
 use Lsv\FoodMarketIntegration\Request\GetSellingPointMenusAvailability;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Lsv\FoodMarketIntegrationTest\ResponseObject;
 
 class GetSellingPointMenusAvailabilityTest extends AbstractRequestTest
 {
@@ -22,7 +22,7 @@ class GetSellingPointMenusAvailabilityTest extends AbstractRequestTest
     public function testCanGetResponse(): void
     {
         $responses = [
-            new MockResponse(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
+            new ResponseObject(file_get_contents(__DIR__.'/responses/get_selling_point_menus.json')),
         ];
         self::setRequest($responses);
 
